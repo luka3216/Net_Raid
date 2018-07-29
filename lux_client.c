@@ -11,7 +11,7 @@
 #include <arpa/inet.h>
 
 #include "lux_client.h"
-#include "lux_fuse.h"
+#include "lux_fuse.c"
 
 void connect_servers(struct storage_info *storage)
 {
@@ -22,13 +22,16 @@ void connect_servers(struct storage_info *storage)
     struct sockaddr_in server_adress;
 
     server_adress.sin_family = AF_INET;
-    server_adress.sin_port = htons(storage->servers[i]->port);
+    server_adress.sin_port = storage->servers[i]->port;
     server_adress.sin_addr.s_addr = inet_addr(storage->servers[i]->server_ip);
-
-    if (connect(socket_fd, (struct sockaddr*) &server_adress, sizeof(struct sockaddr))) {
-      printf("coudln't connect to server.\n");
+    printf("attempting connection to server:%s:%d.\n", storage->servers[i]->server_ip, storage->servers[i]->port);
+    if (connect(socket_fd, (struct sockaddr *)&server_adress, sizeof(struct sockaddr)))
+    {
+      printf("coudln't connect to server. %s\n", strerror(errno));
       exit(-1);
-    } else {
+    }
+    else
+    {
       printf("connected to server: %s:%d.\n", storage->servers[i]->server_ip, storage->servers[i]->port);
       storage->servers[i]->socket_fd = socket_fd;
       send(socket_fd, storage, sizeof(struct storage_info), 0);
@@ -97,7 +100,9 @@ int parse_config_file(int config_fd)
       {
         cur_server = malloc(sizeof(struct lux_server));
         strcpy(cur_server->server_ip, token);
-        cur_server->port = atoi(strtok(NULL, delims));
+        cur_server->port = htons(atoi(strtok(NULL, delims)));
+        cur_server->downtime = 0;
+        cur_server->alive = 1;
         current_storage->servers[server_count] = cur_server;
         server_count++;
         token = strtok(NULL, delims);
@@ -141,13 +146,12 @@ int main(int argc, char **argv)
 
   for (int i = 0; i < 1 /*_lux_client_info->server_count*/; i++)
   {
-    int pid = fork();
-    if (pid == 0)
+    if (fork() == 0)
     {
       if (_lux_client_info.storages[i]->raid == RAID_ONE)
       {
         connect_servers(_lux_client_info.storages[i]);
-        run_storage_raid_one(_lux_client_info.storages[i]);
+        return run_storage_raid_one(_lux_client_info.storages[i]);
       }
       else if (_lux_client_info.storages[i]->raid == RAID_FIVE)
       {

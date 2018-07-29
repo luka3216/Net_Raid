@@ -12,4 +12,4 @@ server2:
 	./lux_server 127.0.0.1 10002 ./server2_dir
 
 unmount:
-	fusermount -u ./mountpoint
+	fusermount -u ./mountpoint1
