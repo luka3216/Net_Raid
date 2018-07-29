@@ -26,10 +26,12 @@ void connect_servers(struct storage_info *storage)
     server_adress.sin_addr.s_addr = inet_addr(storage->servers[i]->server_ip);
 
     if (connect(socket_fd, (struct sockaddr*) &server_adress, sizeof(struct sockaddr))) {
-      printf("coudln't connect to server.");
+      printf("coudln't connect to server.\n");
       exit(-1);
     } else {
+      printf("connected to server: %s:%d.\n", storage->servers[i]->server_ip, storage->servers[i]->port);
       storage->servers[i]->socket_fd = socket_fd;
+      send(socket_fd, storage, sizeof(struct storage_info), 0);
     }
   }
 }
