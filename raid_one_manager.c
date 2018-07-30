@@ -91,17 +91,17 @@ int handle_read(struct raid_one_input input, int client_socket)
 
   fflush(stdout);
 
-  struct raid_one_response response;
+  struct raid_one_file_response response;
   int fd = open(path, 0);
   response.status = fd == -1 ? -1 : 0;
 
-  int size = read(fd, response.buff, 1024);
+  int size = read(fd, response.buff, 4088);
 
   response.size = size;
 
   printf("sending read response.\n");
 
-  send(client_socket, &response, sizeof(struct raid_one_response), 0);
+  send(client_socket, &response, sizeof(struct raid_one_file_response), 0);
 }
 
 int handle_input(struct raid_one_input input, int client_socket)

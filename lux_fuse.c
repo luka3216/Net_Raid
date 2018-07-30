@@ -163,13 +163,13 @@ static int lux_read(const char *path, char *buf, size_t size, off_t offset,
 
   int sent = send(_this_storage.servers[server_id]->socket_fd, &input, sizeof(struct raid_one_input), 0);
 
-  if (size > 1024)
+  if (size > 4088)
   ; //TO-DO
 
-  struct raid_one_response response;
+  struct raid_one_file_response response;
 
   if (sent > 0)
-    recv(_this_storage.servers[server_id]->socket_fd, &response, sizeof(struct raid_one_response), 0);
+    recv(_this_storage.servers[server_id]->socket_fd, &response, sizeof(struct raid_one_file_response), 0);
 
   if (response.status == -1) {
     printf("read at %s unsuccessful\n", path);
