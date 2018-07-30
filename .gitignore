@@ -1,4 +1,2 @@
-#testserver.c
-#testserver
-#testclient.c
-#testclient
+testserver*
+*.gitignore

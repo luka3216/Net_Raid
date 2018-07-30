@@ -13,7 +13,7 @@
 #include "lux_client.h"
 #include "lux_fuse.c"
 
-void connect_servers(struct storage_info *storage)
+void connect_servers(struct storage_info * storage)
 {
   for (int i = 0; i < storage->server_count; i++)
   {

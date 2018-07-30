@@ -114,11 +114,76 @@ static int lux_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
   {
     filler(buf, response.filenames[i], &response.stats[i], 0);
   }
-  /* filler(buf, ".", NULL, 0);
-  filler(buf, "..", NULL, 0);
-  filler(buf, hello_path + 1, NULL, 0);*/
 
   return 0;
+}
+
+static int lux_open(const char *path, struct fuse_file_info *fi)
+{
+  struct raid_one_input input;
+  input.command = OPEN;
+  strcpy(input.path, path);
+
+  int server_id = get_live_server();
+  
+  printf("attemting (open) contact with server %d for path %s\n", server_id, path);
+  fflush(stdout);
+
+  int sent = send(_this_storage.servers[server_id]->socket_fd, &input, sizeof(struct raid_one_input), 0);
+
+  struct raid_one_response response;
+
+  if (sent > 0)
+    recv(_this_storage.servers[server_id]->socket_fd, &response, sizeof(struct raid_one_response), 0);
+
+  if (response.status == -1) {
+    printf("open at %s unsuccessful\n", path);
+  } else {
+    printf("open at %s successful\n", path);
+  }
+
+  return response.status;
+}
+
+static int lux_read(const char *path, char *buf, size_t size, off_t offset,
+                      struct fuse_file_info *fi)
+{
+  (void)fi;
+
+  struct raid_one_input input;
+  input.command = READ;
+  strcpy(input.path, path);
+  input.offset = offset;
+  input.size = size;
+
+  int server_id = get_live_server();
+  
+  printf("attemting (read) contact with server %d for path %s\n", server_id, path);
+  fflush(stdout);
+
+  int sent = send(_this_storage.servers[server_id]->socket_fd, &input, sizeof(struct raid_one_input), 0);
+
+  if (size > 1024)
+  ; //TO-DO
+
+  struct raid_one_response response;
+
+  if (sent > 0)
+    recv(_this_storage.servers[server_id]->socket_fd, &response, sizeof(struct raid_one_response), 0);
+
+  if (response.status == -1) {
+    printf("read at %s unsuccessful\n", path);
+
+    return -1;
+
+  } else {
+    printf("read at %s successful\n", path);
+  }
+
+  memcpy(buf, response.buff, response.size);
+
+  return response.size;
+
 }
 
 static int hello_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
@@ -153,8 +218,6 @@ static int hello_read(const char *path, char *buf, size_t size, off_t offset,
 {
   size_t len;
   (void)fi;
-  if (strcmp(path, hello_path) != 0)
-    return -ENOENT;
 
   len = strlen(hello_str);
   if (offset < len)
@@ -172,9 +235,8 @@ static int hello_read(const char *path, char *buf, size_t size, off_t offset,
 static struct fuse_operations hello_oper = {
     .getattr = lux_getattr,
     .readdir = lux_readdir,
- //   .access = lux_access,
-    .open = hello_open,
-    .read = hello_read,
+    .open = lux_open,
+    .read = lux_read,
 };
 
 int run_storage_raid_one(struct storage_info *storage_info)

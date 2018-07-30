@@ -8,11 +8,15 @@
 #define TEST 0
 #define GETATTR 1
 #define READDIR 2
+#define OPEN 3
+#define READ 4
 
 struct raid_one_input
 {
   int command;
   char path[256];
+  off_t offset;
+  size_t size;
 };
 
 struct raid_one_response
@@ -22,6 +26,7 @@ struct raid_one_response
   struct stat stats[32];
   struct stat one_stat;
   int size;
+  char buff[1024];
 };
 
 #endif // LUX_COMMON_H
