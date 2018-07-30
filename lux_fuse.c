@@ -158,7 +158,7 @@ static int lux_read(const char *path, char *buf, size_t size, off_t offset,
 
   int server_id = get_live_server();
   
-  printf("attemting (read) contact with server %d for path %s\n", server_id, path);
+  printf("attemting (read) contact with server %d for path %s for %d bytes.\n", server_id, path, size);
   fflush(stdout);
 
   int sent = send(_this_storage.servers[server_id]->socket_fd, &input, sizeof(struct raid_one_input), 0);
