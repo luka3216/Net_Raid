@@ -133,14 +133,16 @@ int handle_input(struct raid_one_input input, int client_socket)
   }
 }
 
-int manage_server_raid_one(int client_socket, char *path_to_storage)
+int manage_server_raid_one(int server_socket, char *path_to_storage)
 {
   strcpy(_path_to_storage, path_to_storage);
   while (1)
   {
     struct raid_one_input input;
+    int client_socket = accept(server_socket, NULL, NULL);
     int size = recv(client_socket, &input, sizeof(struct raid_one_input), 0);
     handle_input(input, client_socket);
+    close(client_socket);
   }
   return 0;
 }

@@ -24,6 +24,7 @@ void connect_servers(struct storage_info * storage)
     server_adress.sin_family = AF_INET;
     server_adress.sin_port = storage->servers[i]->port;
     server_adress.sin_addr.s_addr = inet_addr(storage->servers[i]->server_ip);
+    storage->servers[i]->server_adress = server_adress;
     printf("attempting connection to server:%s:%d.\n", storage->servers[i]->server_ip, storage->servers[i]->port);
     if (connect(socket_fd, (struct sockaddr *)&server_adress, sizeof(struct sockaddr)))
     {

@@ -9,6 +9,7 @@ struct lux_server {
   int downtime;
   int alive;
   int socket_fd;
+  struct sockaddr_in server_adress;
 };
 
 struct storage_info {
