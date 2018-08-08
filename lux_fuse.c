@@ -11,36 +11,47 @@
 
 int get_live_server()
 {
-  /* struct raid_one_input test;
+  struct raid_one_input test;
   test.command = TEST;
   if (_this_storage.servers[0]->alive)
   {
-    int res = send(_this_storage.servers[0]->socket_fd, &test, sizeof(struct raid_one_input), 0);
+    int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
+    connect(sock_fd, (struct sockaddr *)&_this_storage.servers[0]->server_adress, sizeof(struct sockaddr_in));
+
+    int res = send(sock_fd, &test, sizeof(struct raid_one_input), 0);
     if (res > 0)
+    {
+      close(sock_fd);
       return 0;
+    }
   }
   if (_this_storage.servers[1]->alive)
   {
-    int res = send(_this_storage.servers[1]->socket_fd, &test, sizeof(struct raid_one_input), 0);
+    int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
+    connect(sock_fd, (struct sockaddr *)&_this_storage.servers[1]->server_adress, sizeof(struct sockaddr_in));
+
+    int res = send(sock_fd, &test, sizeof(struct raid_one_input), 0);
     if (res > 0)
+    {
+      close(sock_fd);
       return 1;
+    }
   }
-  return -1;*/
-  return 0;
+  return -1;
 }
 
 static int lux_getattr(const char *path, struct stat *stbuf)
 {
+  int server_id = get_live_server();
+
   int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
-  connect(sock_fd, &_this_storage.servers[0]->server_adress, sizeof(struct sockaddr_in));
+  connect(sock_fd, (struct sockaddr *)&_this_storage.servers[server_id]->server_adress, sizeof(struct sockaddr_in));
 
   memset(stbuf, 0, sizeof(struct stat));
 
   struct raid_one_input input;
   input.command = GETATTR;
   strcpy(input.path, path);
-
-  int server_id = get_live_server();
 
   printf("attemting (getattr) contact with server %d for path %s\n", server_id, path);
   int sent = send(sock_fd, &input, sizeof(struct raid_one_input), 0);
@@ -68,14 +79,14 @@ static int lux_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
   (void)offset;
   (void)fi;
 
+  int server_id = get_live_server();
+
   int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
-  connect(sock_fd, &_this_storage.servers[0]->server_adress, sizeof(struct sockaddr_in));
+  connect(sock_fd, (struct sockaddr *)&_this_storage.servers[server_id]->server_adress, sizeof(struct sockaddr_in));
 
   struct raid_one_input input;
   input.command = READDIR;
   strcpy(input.path, path);
-
-  int server_id = get_live_server();
 
   printf("attemting (readdir) contact with server %d for path %s\n", server_id, path);
   fflush(stdout);
@@ -106,14 +117,14 @@ static int lux_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
 
 static int lux_open(const char *path, struct fuse_file_info *fi)
 {
+  int server_id = get_live_server();
+
   struct raid_one_input input;
   input.command = OPEN;
   strcpy(input.path, path);
 
   int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
-  connect(sock_fd, &_this_storage.servers[0]->server_adress, sizeof(struct sockaddr_in));
-
-  int server_id = get_live_server();
+  connect(sock_fd, (struct sockaddr *)&_this_storage.servers[server_id]->server_adress, sizeof(struct sockaddr_in));
 
   printf("attemting (open) contact with server %d for path %s\n", server_id, path);
   fflush(stdout);
@@ -142,16 +153,17 @@ static int lux_read(const char *path, char *buf, size_t size, off_t offset,
                     struct fuse_file_info *fi)
 {
   (void)fi;
+
+  int server_id = get_live_server();
+
   int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
-  connect(sock_fd, &_this_storage.servers[0]->server_adress, sizeof(struct sockaddr_in));
+  connect(sock_fd, (struct sockaddr *)&_this_storage.servers[server_id]->server_adress, sizeof(struct sockaddr_in));
 
   struct raid_one_input input;
   input.command = READ;
   strcpy(input.path, path);
   input.offset = offset;
   input.size = size;
-
-  int server_id = get_live_server();
 
   printf("attemting (read) contact with server %d for path %s for %zu bytes.\n", server_id, path, size);
   fflush(stdout);
