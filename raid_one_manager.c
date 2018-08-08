@@ -10,6 +10,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <dirent.h>
+#include <sys/sendfile.h>
 #include "lux_client.h"
 #include "lux_common.h"
 
@@ -91,24 +92,13 @@ int handle_read(struct raid_one_input input, int client_socket)
 
   fflush(stdout);
 
-  struct raid_one_file_response response;
   int fd = open(path, 0);
-
-  int size;
-  if (input.offset > 0) {
-    size = lseek(fd, input.offset, SEEK_SET);
-    response.status = size == -1 ? -1 : 0;
-  }
-
-  size = read(fd, response.buff, 4088);
-  
-  close(fd);
-  
-  response.size = size;
 
   printf("sending read response.\n");
 
-  send(client_socket, &response, sizeof(struct raid_one_file_response), 0);
+  sendfile(client_socket, fd, &input.offset, input.size);
+  
+  close(fd);
 }
 
 int handle_input(struct raid_one_input input, int client_socket)

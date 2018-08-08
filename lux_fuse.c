@@ -156,17 +156,11 @@ static int lux_read(const char *path, char *buf, size_t size, off_t offset,
   printf("attemting (read) contact with server for path %s for %zu bytes.\n", path, size);
   fflush(stdout);
 
-  int sent = send(sock_fd, &input, sizeof(struct raid_one_input), 0);
+  send(sock_fd, &input, sizeof(struct raid_one_input), 0);
 
-  if (size > 4088)
-    ; //TO-DO
+  int res = recv(sock_fd, buf, size, 0);
 
-  struct raid_one_file_response response;
-
-  if (sent > 0)
-    recv(sock_fd, &response, sizeof(struct raid_one_file_response), 0);
-
-  if (response.status == -1)
+  if (res == -1)
   {
     printf("read at %s unsuccessful\n", path);
     close(sock_fd);
@@ -177,10 +171,8 @@ static int lux_read(const char *path, char *buf, size_t size, off_t offset,
     printf("read at %s successful\n", path);
   }
 
-  memcpy(buf, response.buff, response.size);
-
   close(sock_fd);
-  return response.size;
+  return size;
 }
 
 static struct fuse_operations hello_oper = {
