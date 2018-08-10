@@ -13,3 +13,6 @@ server2:
 
 unmount:
 	fusermount -u ./mountpoint1
+
+quick:
+	make unmount; make comp; make server1 & make server2 & make client

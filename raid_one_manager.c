@@ -11,10 +11,12 @@
 #include <arpa/inet.h>
 #include <dirent.h>
 #include <sys/sendfile.h>
+#include <errno.h>
 #include "lux_client.h"
 #include "lux_common.h"
 
 char _path_to_storage[256];
+
 
 int handle_getattr(struct raid_one_input input, int client_socket)
 {
@@ -84,6 +86,25 @@ int handle_open(struct raid_one_input input, int client_socket)
   send(client_socket, &response, sizeof(struct raid_one_response), 0);
 }
 
+int handle_access(struct raid_one_input input, int client_socket)
+{
+  char path[256];
+  sprintf(path, "%s%s", _path_to_storage, input.path);
+  printf("handling access at: %s\n", path);
+
+  fflush(stdout);
+
+  struct raid_one_response response;
+  response.error = 0;
+  if (access(path, input.flags) != 0) {
+    response.error = errno;
+  }
+
+  printf("sending access response.\n");
+
+  send(client_socket, &response, sizeof(struct raid_one_response), 0);
+}
+
 int handle_read(struct raid_one_input input, int client_socket)
 {
   char path[256];
@@ -92,13 +113,96 @@ int handle_read(struct raid_one_input input, int client_socket)
 
   fflush(stdout);
 
-  int fd = open(path, 0);
+  int fd = open(path, O_RDONLY);
 
   printf("sending read response.\n");
 
   sendfile(client_socket, fd, &input.offset, input.size);
   
   close(fd);
+}
+
+int handle_write(struct raid_one_input input, int client_socket)
+{
+  char path[256];
+  char buff[32 * 4096];
+  sprintf(path, "%s%s", _path_to_storage, input.path);
+  printf("handling write at: %s\n", path);
+
+  fflush(stdout);
+
+  int fd = open(path, O_WRONLY);
+
+  lseek(fd, input.offset, SEEK_SET);
+
+  int response = 0;
+  send(client_socket, &response, sizeof(int), 0);
+
+  recv(client_socket, buff, input.size, 0);
+  
+  write(fd, buff, input.size);
+  
+  close(fd);
+}
+
+int handle_truncate(struct raid_one_input input, int client_socket)
+{
+  char path[256];
+  sprintf(path, "%s%s", _path_to_storage, input.path);
+  printf("handling truncate at: %s\n", path);
+
+  fflush(stdout);
+
+  struct raid_one_response response;
+  response.error = 0;
+  if (truncate(path, input.offset) != 0) {
+    response.error = errno;
+  }
+
+  printf("sending truncate response.\n");
+
+  send(client_socket, &response, sizeof(struct raid_one_response), 0);
+}
+
+
+int handle_rename(struct raid_one_input input, int client_socket)
+{
+  char path[256];
+  char path2[256];
+  sprintf(path, "%s%s", _path_to_storage, input.path);
+  sprintf(path2, "%s%s", _path_to_storage, input.char_buf);
+  printf("handling rename at: %s\n", path);
+
+  fflush(stdout);
+
+  struct raid_one_response response;
+  response.error = 0;
+  if (rename(path, path2) != 0) {
+    response.error = errno;
+  }
+
+  printf("sending rename response.\n");
+
+  send(client_socket, &response, sizeof(struct raid_one_response), 0);
+}
+
+int handle_unlink(struct raid_one_input input, int client_socket)
+{
+  char path[256];
+  sprintf(path, "%s%s", _path_to_storage, input.path);
+  printf("handling unlink at: %s\n", path);
+
+  fflush(stdout);
+
+  struct raid_one_response response;
+  response.error = 0;
+  if (unlink(path) != 0) {
+    response.error = errno;
+  }
+
+  printf("sending unlink response.\n");
+
+  send(client_socket, &response, sizeof(struct raid_one_response), 0);
 }
 
 int handle_input(struct raid_one_input input, int client_socket)
@@ -118,6 +222,21 @@ int handle_input(struct raid_one_input input, int client_socket)
     break;
   case READ:
     handle_read(input, client_socket);
+    break;
+  case ACCESS:
+    handle_access(input, client_socket);
+    break;
+  case WRITE:
+    handle_write(input, client_socket);
+    break;
+  case TRUNCATE:
+    handle_truncate(input, client_socket);
+    break;
+  case RENAME:
+    handle_rename(input, client_socket);
+    break;
+  case UNLINK:
+    handle_unlink(input, client_socket);
     break;
   default:;
   }

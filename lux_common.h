@@ -10,13 +10,20 @@
 #define READDIR 2
 #define OPEN 3
 #define READ 4
+#define ACCESS 5
+#define WRITE 6
+#define TRUNCATE 7
+#define RENAME 8
+#define UNLINK 9
 
 struct raid_one_input
 {
   int command;
   char path[256];
+  char char_buf[256];
   off_t offset;
   size_t size;
+  int flags;
 };
 
 struct raid_one_response
@@ -26,6 +33,7 @@ struct raid_one_response
   struct stat stats[32];
   struct stat one_stat;
   int size;
+  int error;
 };
 
 struct raid_one_file_response

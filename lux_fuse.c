@@ -5,6 +5,10 @@
 #include <string.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/sendfile.h>
+
 #include "lux_client.h"
 #include "lux_fuse.h"
 #include "lux_common.h"
@@ -51,6 +55,7 @@ static int lux_getattr(const char *path, struct stat *stbuf)
   strcpy(input.path, path);
 
   printf("attemting (getattr) contact with server for path %s\n", path);
+  fflush(stdout);
   int sent = send(sock_fd, &input, sizeof(struct raid_one_input), 0);
 
   if (sent > 0)
@@ -60,6 +65,7 @@ static int lux_getattr(const char *path, struct stat *stbuf)
     recv(sock_fd, &response, sizeof(struct raid_one_response), 0);
 
     printf("status %d for %s\n", response.status, input.path);
+    fflush(stdout);
 
     memcpy(stbuf, &response.one_stat, sizeof(struct stat));
 
@@ -93,6 +99,7 @@ static int lux_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
     recv(sock_fd, &response, sizeof(struct raid_one_response), 0);
 
   printf("readdir returned.\n");
+  fflush(stdout);
 
   if (response.status != 0)
   {
@@ -158,21 +165,167 @@ static int lux_read(const char *path, char *buf, size_t size, off_t offset,
 
   send(sock_fd, &input, sizeof(struct raid_one_input), 0);
 
-  int res = recv(sock_fd, buf, size, 0);
-
-  if (res == -1)
-  {
-    printf("read at %s unsuccessful\n", path);
-    close(sock_fd);
-    return -1;
-  }
-  else
-  {
-    printf("read at %s successful\n", path);
-  }
+  recv(sock_fd, buf, size, 0);
 
   close(sock_fd);
   return size;
+}
+
+static int lux_write(const char *path, const char *buf, size_t size, off_t offset,
+                    struct fuse_file_info *fi)
+{
+  (void)fi;
+
+  int sock_fd = get_live_server_fd();
+
+  struct raid_one_input input;
+  input.command = WRITE;
+  strcpy(input.path, path);
+  input.offset = offset;
+  input.size = size;
+
+  printf("attemting (write) contact with server for path %s for %zu bytes.\n", path, size);
+  fflush(stdout);
+
+  send(sock_fd, &input, sizeof(struct raid_one_input), 0);
+
+  int response;
+  recv(sock_fd, &response, sizeof(int), 0);
+
+  send(sock_fd, buf, input.size, 0);
+
+  close(sock_fd);
+  return size;
+}
+
+static int lux_access(const char* path, int flags) {
+  
+  struct raid_one_input input;
+  input.command = ACCESS;
+  strcpy(input.path, path);
+  input.flags = flags;
+  
+  int sock_fd = get_live_server_fd();
+
+  printf("attemting (access) contact with server for path %s\n", path);
+  fflush(stdout);
+
+  int sent = send(sock_fd, &input, sizeof(struct raid_one_input), 0);
+
+  struct raid_one_response response;
+
+  if (sent > 0)
+    recv(sock_fd, &response, sizeof(struct raid_one_response), 0);
+
+  if (response.error != 0)
+  {
+    printf("access at %s unsuccessful\n", path);
+  }
+  else
+  {
+    printf("access at %s successful\n", path);
+  }
+
+  close(sock_fd);
+  return -response.error;
+}
+
+static int lux_truncate(const char* path, off_t size) {
+  
+  struct raid_one_input input;
+  input.command = TRUNCATE;
+  strcpy(input.path, path);
+  input.offset = size;
+  
+  int sock_fd = get_live_server_fd();
+
+  printf("attemting (truncate) contact with server for path %s\n", path);
+  fflush(stdout);
+
+  int sent = send(sock_fd, &input, sizeof(struct raid_one_input), 0);
+
+  struct raid_one_response response;
+
+  if (sent > 0)
+    recv(sock_fd, &response, sizeof(struct raid_one_response), 0);
+
+  if (response.error != 0)
+  {
+    printf("truncate at %s unsuccessful\n", path);
+  }
+  else
+  {
+    printf("truncate at %s successful\n", path);
+  }
+
+  close(sock_fd);
+  return -response.error;
+}
+
+static int lux_rename(const char* old, const char* new) {
+  struct raid_one_input input;
+  input.command = RENAME;
+  strcpy(input.path, old);
+  strcpy(input.char_buf, new);
+  
+  int sock_fd = get_live_server_fd();
+
+  printf("attemting (rename) contact with server for path %s\n", old);
+  fflush(stdout);
+
+  int sent = send(sock_fd, &input, sizeof(struct raid_one_input), 0);
+
+  struct raid_one_response response;
+
+  if (sent > 0)
+    recv(sock_fd, &response, sizeof(struct raid_one_response), 0);
+
+  if (response.error != 0)
+  {
+    printf("rename to %s unsuccessful\n", new);
+  }
+  else
+  {
+    printf("rename to %s successful\n", new);
+  }
+
+  close(sock_fd);
+  return -response.error;
+}
+
+
+static int lux_unlink(const char* path) {
+  struct raid_one_input input;
+  input.command = UNLINK;
+  strcpy(input.path, path);
+  
+  int sock_fd = get_live_server_fd();
+
+  printf("attemting (unlink) contact with server for path %s\n", path);
+  fflush(stdout);
+
+  int sent = send(sock_fd, &input, sizeof(struct raid_one_input), 0);
+
+  struct raid_one_response response;
+
+  if (sent > 0)
+    recv(sock_fd, &response, sizeof(struct raid_one_response), 0);
+
+  if (response.error != 0)
+  {
+    printf("unlink to %s unsuccessful\n", path);
+  }
+  else
+  {
+    printf("unlink to %s successful\n", path);
+  }
+
+  close(sock_fd);
+  return -response.error;
+}
+
+static int lux_release(const char* path, struct fuse_file_info* fi) {
+  return 0;
 }
 
 static struct fuse_operations hello_oper = {
@@ -180,6 +333,12 @@ static struct fuse_operations hello_oper = {
     .readdir = lux_readdir,
     .open = lux_open,
     .read = lux_read,
+    .access = lux_access,
+    .write = lux_write,
+    .truncate = lux_truncate,
+    .rename = lux_rename,
+    .release = lux_release,
+    .unlink = lux_unlink,
 };
 
 int run_storage_raid_one(struct storage_info *storage_info)
@@ -189,7 +348,7 @@ int run_storage_raid_one(struct storage_info *storage_info)
   args[0] = strdup("useless");
   args[1] = _this_storage.mountpoint;
   args[2] = strdup("-f");
-  //args[3] = strdup("-s");
-  args[3] = NULL;
-  return fuse_main(3, args, &hello_oper, NULL);
+  args[3] = strdup("-s");
+  args[4] = NULL;
+  return fuse_main(4, args, &hello_oper, NULL);
 }
