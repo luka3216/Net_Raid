@@ -45,7 +45,7 @@ int handle_readdir(struct raid_one_input input, int client_socket)
 
   fflush(stdout);
 
-  struct raid_one_response response;
+  struct raid_one_directories_response response;
   response.error = 0;
 
   char buff[256];
@@ -75,7 +75,7 @@ int handle_readdir(struct raid_one_input input, int client_socket)
 
   printf("sending readdir response.\n");
 
-  send(client_socket, &response, sizeof(struct raid_one_response), 0);
+  send(client_socket, &response, sizeof(struct raid_one_directories_response), 0);
 }
 
 int handle_open(struct raid_one_input input, int client_socket)
@@ -295,7 +295,8 @@ int handle_input(struct raid_one_input input, int client_socket)
 {
   switch (input.command)
   {
-  case TEST:
+  case DIE:
+    exit(0);
     break;
   case GETATTR:
     handle_getattr(input, client_socket);

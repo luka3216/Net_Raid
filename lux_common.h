@@ -5,7 +5,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#define TEST 0
+#define DIE 0
 #define GETATTR 1
 #define READDIR 2
 #define OPEN 3
@@ -19,6 +19,12 @@
 #define CREATE 11
 #define UTIMENS 12
 #define MKDIR 13
+
+typedef struct raid_one_live_sockets
+{
+  int count;
+  int sock_fd[2];
+} server_sockets;
 
 struct raid_one_input
 {
@@ -35,7 +41,14 @@ struct raid_one_input
 
 struct raid_one_response
 {
-  int status;
+  struct stat stats[32];
+  struct stat one_stat;
+  int size;
+  int error;
+};
+
+struct raid_one_directories_response
+{
   char filenames[32][32];
   struct stat stats[32];
   struct stat one_stat;
