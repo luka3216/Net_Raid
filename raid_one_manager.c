@@ -19,14 +19,20 @@ char _path_to_storage[256];
 
 
 int handle_getattr(struct raid_one_input input, int client_socket)
-{
+{ 
   char path[256];
   sprintf(path, "%s%s", _path_to_storage, input.path);
-  printf("handling gettattr at: %s\n", path);
+  printf("handling getattr at: %s\n", path);
+
+  fflush(stdout);
 
   struct raid_one_response response;
-  response.status = stat(path, &response.one_stat);
-  printf("getattr return: %d\n", response.status);
+  response.error = 0;
+  if (stat(path, &response.one_stat) != 0) {
+    response.error = errno;
+  }
+
+  printf("sending getattr response.\n");
 
   send(client_socket, &response, sizeof(struct raid_one_response), 0);
 }
@@ -205,6 +211,81 @@ int handle_unlink(struct raid_one_input input, int client_socket)
   send(client_socket, &response, sizeof(struct raid_one_response), 0);
 }
 
+int handle_rmdir(struct raid_one_input input, int client_socket)
+{
+  char path[256];
+  sprintf(path, "%s%s", _path_to_storage, input.path);
+  printf("handling rmdir at: %s\n", path);
+
+  fflush(stdout);
+
+  struct raid_one_response response;
+  response.error = 0;
+  if (rmdir(path) != 0) {
+    response.error = errno;
+  }
+
+  printf("sending rmdir response.\n");
+
+  send(client_socket, &response, sizeof(struct raid_one_response), 0);
+}
+
+int handle_mknod(struct raid_one_input input, int client_socket)
+{
+  char path[256];
+  sprintf(path, "%s%s", _path_to_storage, input.path);
+  printf("handling mknod at: %s\n", path);
+
+  fflush(stdout);
+
+  struct raid_one_response response;
+  response.error = 0;
+  if (mknod(path, input.mode, input.dev) != 0) {
+    response.error = errno;
+  }
+
+  printf("sending mknod response.\n");
+
+  send(client_socket, &response, sizeof(struct raid_one_response), 0);
+}
+
+int handle_mkdir(struct raid_one_input input, int client_socket)
+{
+  char path[256];
+  sprintf(path, "%s%s", _path_to_storage, input.path);
+  printf("handling mkdir at: %s\n", path);
+
+  fflush(stdout);
+
+  struct raid_one_response response;
+  response.error = 0;
+  if (mkdir(path, input.mode) != 0) {
+    response.error = errno;
+  }
+
+  printf("sending mkdir response.\n");
+
+  send(client_socket, &response, sizeof(struct raid_one_response), 0);
+}
+
+int handle_utimens(struct raid_one_input input, int client_socket) {
+  char path[256];
+  sprintf(path, "%s%s", _path_to_storage, input.path);
+  printf("handling utimens at: %s\n", path);
+
+  fflush(stdout);
+
+  struct raid_one_response response;
+  response.error = 0;
+  if (utimensat(AT_FDCWD, path, input.spec, 0) != 0) {
+    response.error = errno;
+  }
+
+  printf("sending utimens response.\n");
+
+  send(client_socket, &response, sizeof(struct raid_one_response), 0); 
+}
+
 int handle_input(struct raid_one_input input, int client_socket)
 {
   switch (input.command)
@@ -237,6 +318,18 @@ int handle_input(struct raid_one_input input, int client_socket)
     break;
   case UNLINK:
     handle_unlink(input, client_socket);
+    break;
+  case RMDIR:
+    handle_rmdir(input, client_socket);
+    break;
+  case CREATE:
+    handle_mknod(input, client_socket);
+    break;
+  case UTIMENS:
+    handle_utimens(input, client_socket);
+    break;
+  case MKDIR:
+    handle_mkdir(input, client_socket);
     break;
   default:;
   }

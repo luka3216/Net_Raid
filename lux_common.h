@@ -15,6 +15,10 @@
 #define TRUNCATE 7
 #define RENAME 8
 #define UNLINK 9
+#define RMDIR 10
+#define CREATE 11
+#define UTIMENS 12
+#define MKDIR 13
 
 struct raid_one_input
 {
@@ -23,6 +27,9 @@ struct raid_one_input
   char char_buf[256];
   off_t offset;
   size_t size;
+  mode_t mode;
+  dev_t dev;
+  struct timespec spec[2];
   int flags;
 };
 

@@ -64,13 +64,13 @@ static int lux_getattr(const char *path, struct stat *stbuf)
 
     recv(sock_fd, &response, sizeof(struct raid_one_response), 0);
 
-    printf("status %d for %s\n", response.status, input.path);
+    printf("status %d for %s\n", response.error, input.path);
     fflush(stdout);
 
     memcpy(stbuf, &response.one_stat, sizeof(struct stat));
 
     close(sock_fd);
-    return response.status;
+    return -response.error;
   }
   close(sock_fd);
   return -1;
@@ -324,6 +324,132 @@ static int lux_unlink(const char* path) {
   return -response.error;
 }
 
+static int lux_rmdir(const char* path) {
+  struct raid_one_input input;
+  input.command = RMDIR;
+  strcpy(input.path, path);
+  
+  int sock_fd = get_live_server_fd();
+
+  printf("attemting (rmdir) contact with server for path %s\n", path);
+  fflush(stdout);
+
+  int sent = send(sock_fd, &input, sizeof(struct raid_one_input), 0);
+
+  struct raid_one_response response;
+
+  if (sent > 0)
+    recv(sock_fd, &response, sizeof(struct raid_one_response), 0);
+
+  if (response.error != 0)
+  {
+    printf("rmdir to %s unsuccessful\n", path);
+  }
+  else
+  {
+    printf("rmdir to %s successful\n", path);
+  }
+
+  close(sock_fd);
+  return -response.error;
+}
+
+static int lux_mknod(const char* path, mode_t mode, dev_t dev) {
+  struct raid_one_input input;
+  input.command = CREATE;
+  strcpy(input.path, path);
+  input.mode = mode;
+  input.dev = dev;
+  
+  int sock_fd = get_live_server_fd();
+
+  printf("attemting (mknod) contact with server for path %s\n", path);
+  fflush(stdout);
+
+  int sent = send(sock_fd, &input, sizeof(struct raid_one_input), 0);
+
+  struct raid_one_response response;
+
+  if (sent > 0)
+    recv(sock_fd, &response, sizeof(struct raid_one_response), 0);
+
+  if (response.error != 0)
+  {
+    printf("mknod to %s unsuccessful\n", path);
+  }
+  else
+  {
+    printf("mknod to %s successful\n", path);
+  }
+
+  close(sock_fd);
+  return -response.error;
+}
+
+
+static int lux_mkdir(const char* path, mode_t mode) {
+  struct raid_one_input input;
+  input.command = MKDIR;
+  strcpy(input.path, path);
+  input.mode = mode;
+  
+  int sock_fd = get_live_server_fd();
+
+  printf("attemting (mkdir) contact with server for path %s\n", path);
+  fflush(stdout);
+
+  int sent = send(sock_fd, &input, sizeof(struct raid_one_input), 0);
+
+  struct raid_one_response response;
+
+  if (sent > 0)
+    recv(sock_fd, &response, sizeof(struct raid_one_response), 0);
+
+  if (response.error != 0)
+  {
+    printf("mkdir to %s unsuccessful\n", path);
+  }
+  else
+  {
+    printf("mkdir to %s successful\n", path);
+  }
+
+  close(sock_fd);
+  return -response.error;
+}
+
+
+static int lux_utimens(const char* path, const struct timespec tv[2]) {
+    struct raid_one_input input;
+  input.command = UTIMENS;
+  strcpy(input.path, path);
+  memcpy(input.spec, tv, 2*sizeof(struct timespec));
+  
+  int sock_fd = get_live_server_fd();
+
+  printf("attemting (utimens) contact with server for path %s\n", path);
+  fflush(stdout);
+
+  int sent = send(sock_fd, &input, sizeof(struct raid_one_input), 0);
+
+  struct raid_one_response response;
+
+  if (sent > 0)
+    recv(sock_fd, &response, sizeof(struct raid_one_response), 0);
+
+  if (response.error != 0)
+  {
+    printf("utimens to %s unsuccessful\n", path);
+  }
+  else
+  {
+    printf("utimens to %s successful\n", path);
+  }
+
+  close(sock_fd);
+  return -response.error;
+}
+
 static int lux_release(const char* path, struct fuse_file_info* fi) {
   return 0;
 }
@@ -339,6 +465,10 @@ static struct fuse_operations hello_oper = {
     .rename = lux_rename,
     .release = lux_release,
     .unlink = lux_unlink,
+    .rmdir = lux_rmdir,
+    .mknod = lux_mknod,
+    .utimens = lux_utimens,
+    .mkdir = lux_mkdir,
 };
 
 int run_storage_raid_one(struct storage_info *storage_info)
