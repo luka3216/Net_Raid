@@ -395,7 +395,7 @@ int run_storage_raid_one(struct storage_info *storage_info)
   args[0] = strdup("useless");
   args[1] = _this_storage.mountpoint;
   args[2] = strdup("-f");
-  args[3] = strdup("-s");
-  args[4] = NULL;
-  return fuse_main(4, args, &hello_oper, NULL);
+  //args[3] = strdup("-s"); // not needed in vagrant
+  args[3] = NULL;
+  return fuse_main(3, args, &hello_oper, NULL);
 }
