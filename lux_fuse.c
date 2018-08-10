@@ -25,7 +25,9 @@ int get_live_server_fd()
     if (res != -1)
     {
       return sock_fd;
-    } else {
+    }
+    else
+    {
       close(sock_fd);
     }
   }
@@ -37,17 +39,31 @@ int get_live_server_fd()
     if (res != -1)
     {
       return sock_fd;
-    } else {
+    }
+    else
+    {
       close(sock_fd);
     }
   }
   return -1;
 }
 
+int handle_error(int sock_fd)
+{
+  close(sock_fd);
+  return -errno;
+}
+
+int handle_return(int sock_fd, int error)
+{
+  close(sock_fd);
+  return -error;
+}
+
 static int lux_getattr(const char *path, struct stat *stbuf)
 {
   int sock_fd = get_live_server_fd();
-  
+
   memset(stbuf, 0, sizeof(struct stat));
 
   struct raid_one_input input;
@@ -56,24 +72,19 @@ static int lux_getattr(const char *path, struct stat *stbuf)
 
   printf("attemting (getattr) contact with server for path %s\n", path);
   fflush(stdout);
-  int sent = send(sock_fd, &input, sizeof(struct raid_one_input), 0);
 
-  if (sent > 0)
-  {
-    struct raid_one_response response;
+  struct raid_one_response response;
 
-    recv(sock_fd, &response, sizeof(struct raid_one_response), 0);
+  if (send(sock_fd, &input, sizeof(struct raid_one_input), 0) < 0
+    || recv(sock_fd, &response, sizeof(struct raid_one_response), 0) < 0)
+    return handle_error(sock_fd);
 
-    printf("status %d for %s\n", response.error, input.path);
-    fflush(stdout);
+  printf("status %d for %s\n", response.error, input.path);
+  fflush(stdout);
 
-    memcpy(stbuf, &response.one_stat, sizeof(struct stat));
+  memcpy(stbuf, &response.one_stat, sizeof(struct stat));
 
-    close(sock_fd);
-    return -response.error;
-  }
-  close(sock_fd);
-  return -1;
+  return handle_return(sock_fd, response.error);
 }
 
 static int lux_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
@@ -91,29 +102,21 @@ static int lux_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
   printf("attemting (readdir) contact with server for path %s\n", path);
   fflush(stdout);
 
-  int sent = send(sock_fd, &input, sizeof(struct raid_one_input), 0);
-
   struct raid_one_response response;
 
-  if (sent > 0)
-    recv(sock_fd, &response, sizeof(struct raid_one_response), 0);
+  if (send(sock_fd, &input, sizeof(struct raid_one_input), 0) < 0
+    || recv(sock_fd, &response, sizeof(struct raid_one_response), 0) < 0)
+    return handle_error(sock_fd);
 
   printf("readdir returned.\n");
   fflush(stdout);
-
-  if (response.status != 0)
-  {
-    close(sock_fd);
-    return errno;
-  }
 
   for (int i = 0; i < response.size; i++)
   {
     filler(buf, response.filenames[i], &response.stats[i], 0);
   }
 
-  close(sock_fd);
-  return 0;
+  return handle_return(sock_fd, response.error);
 }
 
 static int lux_open(const char *path, struct fuse_file_info *fi)
@@ -121,20 +124,20 @@ static int lux_open(const char *path, struct fuse_file_info *fi)
   struct raid_one_input input;
   input.command = OPEN;
   strcpy(input.path, path);
-  
+
   int sock_fd = get_live_server_fd();
 
   printf("attemting (open) contact with server for path %s\n", path);
   fflush(stdout);
 
-  int sent = send(sock_fd, &input, sizeof(struct raid_one_input), 0);
-
   struct raid_one_response response;
 
-  if (sent > 0)
-    recv(sock_fd, &response, sizeof(struct raid_one_response), 0);
+  if (send(sock_fd, &input, sizeof(struct raid_one_input), 0) < 0
+    || recv(sock_fd, &response, sizeof(struct raid_one_response), 0) < 0) {
+    return handle_error(sock_fd);
+  }
 
-  if (response.status == -1)
+  if (response.error != 0)
   {
     printf("open at %s unsuccessful\n", path);
   }
@@ -143,8 +146,7 @@ static int lux_open(const char *path, struct fuse_file_info *fi)
     printf("open at %s successful\n", path);
   }
 
-  close(sock_fd);
-  return response.status;
+  return handle_return(sock_fd, response.error);
 }
 
 static int lux_read(const char *path, char *buf, size_t size, off_t offset,
@@ -163,16 +165,18 @@ static int lux_read(const char *path, char *buf, size_t size, off_t offset,
   printf("attemting (read) contact with server for path %s for %zu bytes.\n", path, size);
   fflush(stdout);
 
-  send(sock_fd, &input, sizeof(struct raid_one_input), 0);
+  if (send(sock_fd, &input, sizeof(struct raid_one_input), 0) < 0 
+    || recv(sock_fd, buf, size, 0) < 0) {
+    return handle_error(sock_fd);
+  }
 
-  recv(sock_fd, buf, size, 0);
 
   close(sock_fd);
   return size;
 }
 
 static int lux_write(const char *path, const char *buf, size_t size, off_t offset,
-                    struct fuse_file_info *fi)
+                     struct fuse_file_info *fi)
 {
   (void)fi;
 
@@ -198,24 +202,25 @@ static int lux_write(const char *path, const char *buf, size_t size, off_t offse
   return size;
 }
 
-static int lux_access(const char* path, int flags) {
-  
+static int lux_access(const char *path, int flags)
+{
+
   struct raid_one_input input;
   input.command = ACCESS;
   strcpy(input.path, path);
   input.flags = flags;
-  
+
   int sock_fd = get_live_server_fd();
 
   printf("attemting (access) contact with server for path %s\n", path);
   fflush(stdout);
 
-  int sent = send(sock_fd, &input, sizeof(struct raid_one_input), 0);
-
   struct raid_one_response response;
 
-  if (sent > 0)
-    recv(sock_fd, &response, sizeof(struct raid_one_response), 0);
+  if (send(sock_fd, &input, sizeof(struct raid_one_input), 0) < 0
+    || recv(sock_fd, &response, sizeof(struct raid_one_response), 0) < 0) {
+    return handle_error(sock_fd);
+  }
 
   if (response.error != 0)
   {
@@ -230,13 +235,14 @@ static int lux_access(const char* path, int flags) {
   return -response.error;
 }
 
-static int lux_truncate(const char* path, off_t size) {
-  
+static int lux_truncate(const char *path, off_t size)
+{
+
   struct raid_one_input input;
   input.command = TRUNCATE;
   strcpy(input.path, path);
   input.offset = size;
-  
+
   int sock_fd = get_live_server_fd();
 
   printf("attemting (truncate) contact with server for path %s\n", path);
@@ -262,12 +268,13 @@ static int lux_truncate(const char* path, off_t size) {
   return -response.error;
 }
 
-static int lux_rename(const char* old, const char* new) {
+static int lux_rename(const char *old, const char *new)
+{
   struct raid_one_input input;
   input.command = RENAME;
   strcpy(input.path, old);
   strcpy(input.char_buf, new);
-  
+
   int sock_fd = get_live_server_fd();
 
   printf("attemting (rename) contact with server for path %s\n", old);
@@ -293,12 +300,12 @@ static int lux_rename(const char* old, const char* new) {
   return -response.error;
 }
 
-
-static int lux_unlink(const char* path) {
+static int lux_unlink(const char *path)
+{
   struct raid_one_input input;
   input.command = UNLINK;
   strcpy(input.path, path);
-  
+
   int sock_fd = get_live_server_fd();
 
   printf("attemting (unlink) contact with server for path %s\n", path);
@@ -324,11 +331,12 @@ static int lux_unlink(const char* path) {
   return -response.error;
 }
 
-static int lux_rmdir(const char* path) {
+static int lux_rmdir(const char *path)
+{
   struct raid_one_input input;
   input.command = RMDIR;
   strcpy(input.path, path);
-  
+
   int sock_fd = get_live_server_fd();
 
   printf("attemting (rmdir) contact with server for path %s\n", path);
@@ -354,13 +362,14 @@ static int lux_rmdir(const char* path) {
   return -response.error;
 }
 
-static int lux_mknod(const char* path, mode_t mode, dev_t dev) {
+static int lux_mknod(const char *path, mode_t mode, dev_t dev)
+{
   struct raid_one_input input;
   input.command = CREATE;
   strcpy(input.path, path);
   input.mode = mode;
   input.dev = dev;
-  
+
   int sock_fd = get_live_server_fd();
 
   printf("attemting (mknod) contact with server for path %s\n", path);
@@ -386,13 +395,13 @@ static int lux_mknod(const char* path, mode_t mode, dev_t dev) {
   return -response.error;
 }
 
-
-static int lux_mkdir(const char* path, mode_t mode) {
+static int lux_mkdir(const char *path, mode_t mode)
+{
   struct raid_one_input input;
   input.command = MKDIR;
   strcpy(input.path, path);
   input.mode = mode;
-  
+
   int sock_fd = get_live_server_fd();
 
   printf("attemting (mkdir) contact with server for path %s\n", path);
@@ -418,13 +427,13 @@ static int lux_mkdir(const char* path, mode_t mode) {
   return -response.error;
 }
 
-
-static int lux_utimens(const char* path, const struct timespec tv[2]) {
-    struct raid_one_input input;
+static int lux_utimens(const char *path, const struct timespec tv[2])
+{
+  struct raid_one_input input;
   input.command = UTIMENS;
   strcpy(input.path, path);
-  memcpy(input.spec, tv, 2*sizeof(struct timespec));
-  
+  memcpy(input.spec, tv, 2 * sizeof(struct timespec));
+
   int sock_fd = get_live_server_fd();
 
   printf("attemting (utimens) contact with server for path %s\n", path);
@@ -450,7 +459,8 @@ static int lux_utimens(const char* path, const struct timespec tv[2]) {
   return -response.error;
 }
 
-static int lux_release(const char* path, struct fuse_file_info* fi) {
+static int lux_release(const char *path, struct fuse_file_info *fi)
+{
   return 0;
 }
 
