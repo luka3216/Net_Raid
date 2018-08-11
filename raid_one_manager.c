@@ -144,10 +144,14 @@ int handle_write(struct raid_one_input input, int client_socket)
 
   int fd = open(path, O_WRONLY);
 
-  lseek(fd, input.offset, SEEK_SET);
+  off_t lsres = lseek(fd, input.offset, SEEK_SET);
 
-  int response = 0;
-  send(client_socket, &response, sizeof(int), 0);
+  struct raid_one_response response;
+  response.error = 0;
+  if (fd == -1 || lsres == -1) {
+    response.error = errno;
+  }
+  send(client_socket, &response, sizeof(struct raid_one_response), 0);
 
   recv(client_socket, buff, input.size, 0);
   

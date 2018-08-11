@@ -223,16 +223,19 @@ static int lux_write(const char *path, const char *buf, size_t size, off_t offse
 
   struct raid_one_input input = generate_server_input(WRITE, path, NULL, offset, size, 0, 0, NULL, 0);
 
-  int responses[2];
+  struct raid_one_response responses[2];
 
   printf("attemting (write) contact with server for path %s for %zu bytes.\n", path, size);
   fflush(stdout);
   for (int i = 0; i < socks.count; i++)
   {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(int), 0) < 0 || send(socks.sock_fd[i], buf, input.size, 0) < 0)
-      return handle_error(socks.sock_fd[i]);
+    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 
+    || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0 
+    || send(socks.sock_fd[i], buf, input.size, 0) < 0)
+      return handle_errors(socks);
   }
-  return size;
+  int error = handle_returns(socks, responses);
+  return error == 0 ? size : error;
 }
 
 static int lux_access(const char *path, int flags)
