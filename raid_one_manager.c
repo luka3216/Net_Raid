@@ -167,7 +167,7 @@ int handle_truncate(struct raid_one_input input, int client_socket)
   struct raid_one_response response;
   response.error = 0;
   if (truncate(path, input.offset) != 0) {
-    response.error = errno;
+  //  response.error = errno;
   }
 
   printf("sending truncate response.\n");
