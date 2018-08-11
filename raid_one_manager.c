@@ -17,6 +17,18 @@
 
 char _path_to_storage[256];
 
+int handle_init(struct raid_one_input input, int client_socket)
+{ 
+  printf("handling init.\n");
+
+  fflush(stdout);
+
+  _this_storage = malloc(sizeof(struct storage_info));
+  recv(client_socket, _this_storage, sizeof(struct storage_info), 0);
+  close(client_socket);
+  printf("managing storage: %s. raid: %d \n", _this_storage->storage_name, _this_storage->raid);
+}
+
 
 int handle_getattr(struct raid_one_input input, int client_socket)
 { 
@@ -299,8 +311,8 @@ int handle_input(struct raid_one_input input, int client_socket)
 {
   switch (input.command)
   {
-  case DIE:
-    exit(0);
+  case INIT:
+    handle_init(input, client_socket);
     break;
   case GETATTR:
     handle_getattr(input, client_socket);

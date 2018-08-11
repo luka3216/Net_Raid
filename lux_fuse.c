@@ -116,9 +116,30 @@ int handle_returns(struct raid_one_live_sockets socks, struct raid_one_response 
   for (int i = 0; i < socks.count; i++)
   {
     close(socks.sock_fd[i]);
-    if (responses[i].error != 0) res = responses[i].error;
+    if (responses[i].error != 0)
+      res = responses[i].error;
   }
   return -res;
+}
+
+int lux_init_server(int i)
+{
+  server_sockets socks = get_live_sockets();
+
+  struct raid_one_input input;
+  input.command = INIT;
+
+  printf("attemting (init) contact with server%s:%d.\n", _this_storage.servers[i]->server_ip, _this_storage.servers[i]->port);
+  fflush(stdout);
+
+  if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 
+  || send(socks.sock_fd[i], &_this_storage, sizeof(struct storage_info), 0) < 0)
+    return handle_errors(socks);
+
+  printf("connected to server: %s:%d.\n", _this_storage.servers[i]->server_ip, _this_storage.servers[i]->port);
+  close(socks.sock_fd[0]);
+  close(socks.sock_fd[1]);
+  return 0;
 }
 
 static int lux_getattr(const char *path, struct stat *stbuf)
@@ -229,9 +250,7 @@ static int lux_write(const char *path, const char *buf, size_t size, off_t offse
   fflush(stdout);
   for (int i = 0; i < socks.count; i++)
   {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 
-    || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0 
-    || send(socks.sock_fd[i], buf, input.size, 0) < 0)
+    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0 || send(socks.sock_fd[i], buf, input.size, 0) < 0)
       return handle_errors(socks);
   }
   int error = handle_returns(socks, responses);
@@ -269,8 +288,7 @@ static int lux_truncate(const char *path, off_t size)
   fflush(stdout);
   for (int i = 0; i < socks.count; i++)
   {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 
-    || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
+    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
       return handle_errors(socks);
   }
 
@@ -289,8 +307,7 @@ static int lux_rename(const char *old, const char *new)
   fflush(stdout);
   for (int i = 0; i < socks.count; i++)
   {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 
-    || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
+    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
       return handle_errors(socks);
   }
 
@@ -309,8 +326,7 @@ static int lux_unlink(const char *path)
   fflush(stdout);
   for (int i = 0; i < socks.count; i++)
   {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 
-    || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
+    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
       return handle_errors(socks);
   }
 
@@ -329,8 +345,7 @@ static int lux_rmdir(const char *path)
   fflush(stdout);
   for (int i = 0; i < socks.count; i++)
   {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 
-    || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
+    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
       return handle_errors(socks);
   }
 
@@ -349,8 +364,7 @@ static int lux_mknod(const char *path, mode_t mode, dev_t dev)
   fflush(stdout);
   for (int i = 0; i < socks.count; i++)
   {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 
-    || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
+    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
       return handle_errors(socks);
   }
 
@@ -369,8 +383,7 @@ static int lux_mkdir(const char *path, mode_t mode)
   fflush(stdout);
   for (int i = 0; i < socks.count; i++)
   {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 
-    || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
+    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
       return handle_errors(socks);
   }
 
@@ -389,8 +402,7 @@ static int lux_utimens(const char *path, const struct timespec tv[2])
   fflush(stdout);
   for (int i = 0; i < socks.count; i++)
   {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 
-    || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
+    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
       return handle_errors(socks);
   }
 
@@ -422,6 +434,9 @@ static struct fuse_operations hello_oper = {
 int run_storage_raid_one(struct storage_info *storage_info)
 {
   _this_storage = *storage_info;
+  for (int i = 0; i < 2; i++) {
+    lux_init_server(i);
+  }
   char **args = malloc(3 * sizeof(char *));
   args[0] = strdup("useless");
   args[1] = _this_storage.mountpoint;

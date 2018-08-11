@@ -13,30 +13,16 @@
 #include "lux_client.h"
 #include "lux_fuse.c"
 
-void connect_servers(struct storage_info * storage)
+void config_servers(struct storage_info * storage)
 {
   for (int i = 0; i < storage->server_count; i++)
   {
-    int socket_fd = socket(AF_INET, SOCK_STREAM, 0);
-
     struct sockaddr_in server_adress;
 
     server_adress.sin_family = AF_INET;
     server_adress.sin_port = storage->servers[i]->port;
     server_adress.sin_addr.s_addr = inet_addr(storage->servers[i]->server_ip);
-    storage->servers[i]->server_adress = server_adress;
-    printf("attempting connection to server:%s:%d.\n", storage->servers[i]->server_ip, storage->servers[i]->port);
-    if (connect(socket_fd, (struct sockaddr *)&server_adress, sizeof(struct sockaddr)))
-    {
-      printf("coudln't connect to server. %s\n", strerror(errno));
-      exit(-1);
-    }
-    else
-    {
-      printf("connected to server: %s:%d.\n", storage->servers[i]->server_ip, storage->servers[i]->port);
-      storage->servers[i]->socket_fd = socket_fd;
-      send(socket_fd, storage, sizeof(struct storage_info), 0);
-    }
+    storage->servers[i]->server_adress = server_adress;  
   }
 }
 
@@ -151,7 +137,7 @@ int main(int argc, char **argv)
     {
       if (_lux_client_info.storages[i]->raid == RAID_ONE)
       {
-        connect_servers(_lux_client_info.storages[i]);
+        config_servers(_lux_client_info.storages[i]);
         return run_storage_raid_one(_lux_client_info.storages[i]);
       }
       else if (_lux_client_info.storages[i]->raid == RAID_FIVE)
