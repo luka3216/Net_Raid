@@ -1,2 +1,4 @@
-testserver*
-*.gitignore
+testclient
+testserver
+lux_server
+lux_client
