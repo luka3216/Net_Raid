@@ -5,7 +5,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#define INIT 0
+#define DUMMY 0
 #define GETATTR 1
 #define READDIR 2
 #define OPEN 3
@@ -23,7 +23,7 @@
 #define STATUS_DEGRADED 1
 #define STATUS_DEAD 2
 
-const char commands[14][16] = {"init", "getattr", "readdir", "open", "read", "access", "write", "truncate", "rename", "unlink", "rmdir", "mknod", "utimens", "mkdir"};
+const char commands[14][16] = {"dummy", "getattr", "readdir", "open", "read", "access", "write", "truncate", "rename", "unlink", "rmdir", "mknod", "utimens", "mkdir"};
 
 typedef struct raid_one_live_sockets
 {

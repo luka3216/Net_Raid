@@ -49,19 +49,29 @@ void *monitor_routine(void *args)
   while (1)
   {
     sleep(1);
-    if (this_server->status == STATUS_DEGRADED)
-    {
-      int time_since_fail = difftime(time(NULL), this_server->fail_time);
-      int res = get_server_fd(server_index);
-      if (res != -1)
-      {
-        printf("connection restored with server: %s:%d after %d seconds\n", this_server->server_ip, this_server->port, time_since_fail);
-        this_server->status = STATUS_ALIVE;
-        close(res);
+    int sock_fd = get_server_fd(server_index);
+    if (this_server->status == STATUS_ALIVE) {
+      if (sock_fd == -1) {
+        this_server->status = STATUS_DEGRADED;
+        this_server->fail_time = time(NULL);
+        printf("connection failed with server: %s:%d.\n", this_server->server_ip, this_server->port); 
+      } else {
+        struct raid_one_input input = generate_server_input(DUMMY, NULL, NULL, 0, 0, 0, 0, NULL, 0);
+        send(sock_fd, &input, sizeof(struct raid_one_input), 0);    
+        close(sock_fd);
       }
-      else
-      {
-        printf("coudln't connect with server: %s:%d for %d seconds\n", this_server->server_ip, this_server->port, time_since_fail);
+    } else if (this_server->status == STATUS_DEGRADED) {
+      int time_since_fail = difftime(time(NULL), this_server->fail_time);
+      if (sock_fd == -1) {
+        printf("coudln't connect with server: %s:%d for %d seconds\n", this_server->server_ip, this_server->port, time_since_fail);    
+      } else {
+        this_server->status = STATUS_ALIVE;
+        
+        struct raid_one_input input = generate_server_input(DUMMY, NULL, NULL, 0, 0, 0, 0, NULL, 0);
+        send(sock_fd, &input, sizeof(struct raid_one_input), 0);   
+        close(sock_fd);
+
+        printf("connection restored with server: %s:%d after %d seconds\n", this_server->server_ip, this_server->port, time_since_fail);
       }
     }
   }
@@ -83,8 +93,6 @@ int monitor_server(int server_index)
 int get_server_fd(int index)
 {
   struct lux_server * this_server = _this_storage.servers[index];
-  if (this_server->status == STATUS_ALIVE
-  || this_server->status == STATUS_DEGRADED)
   {
     int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (connect(sock_fd, (struct sockaddr *)&this_server->server_adress, sizeof(struct sockaddr_in)) != -1)
@@ -93,8 +101,6 @@ int get_server_fd(int index)
     }
     else
     {
-      if (this_server->status == STATUS_ALIVE) this_server->fail_time = time(NULL);
-      this_server->status = STATUS_DEGRADED;
       close(sock_fd);
     }
   }
@@ -166,7 +172,7 @@ int lux_init_server(int i)
   server_sockets socks = get_live_sockets();
 
   struct raid_one_input input;
-  input.command = INIT;
+  //input.command = INIT;
 
   printf("attemting (init) contact with server%s:%d.\n", _this_storage.servers[i]->server_ip, _this_storage.servers[i]->port);
   fflush(stdout);

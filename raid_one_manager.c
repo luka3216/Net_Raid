@@ -311,9 +311,9 @@ int handle_input(struct raid_one_input input, int client_socket)
 {
   switch (input.command)
   {
-  case INIT:
+  /*case INIT:
     handle_init(input, client_socket);
-    break;
+    break;*/
   case GETATTR:
     handle_getattr(input, client_socket);
     break;
