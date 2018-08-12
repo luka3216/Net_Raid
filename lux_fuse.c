@@ -49,7 +49,7 @@ void *monitor_routine(void *args)
   while (1)
   {
     sleep(1);
-    int sock_fd = get_server_fd(server_index);
+    int sock_fd = get_server_fd(this_server);
     if (this_server->status == STATUS_ALIVE)
     {
       if (sock_fd == -1)
@@ -71,6 +71,11 @@ void *monitor_routine(void *args)
       if (sock_fd == -1)
       {
         printf("coudln't connect with server: %s:%d for %d seconds\n", this_server->server_ip, this_server->port, time_since_fail);
+        if (time_since_fail >= _lux_client_info.timeout) {
+          _this_storage.servers[server_index] = _this_storage.hotswap;
+          this_server = _this_storage.servers[server_index];
+          printf("replaced dead server with hotswap server: %s:%d.\n", this_server->server_ip, this_server->port);
+        }
       }
       else
       {
@@ -96,9 +101,8 @@ int monitor_server(int server_index)
   return 0;
 }
 
-int get_server_fd(int index)
+int get_server_fd(struct lux_server* this_server)
 {
-  struct lux_server *this_server = _this_storage.servers[index];
   {
     int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (connect(sock_fd, (struct sockaddr *)&this_server->server_adress, sizeof(struct sockaddr_in)) != -1)
@@ -120,9 +124,10 @@ int get_live_server_fd()
   int res = -1;
   for (int i = 0; i < 2; i++)
   {
-    if (_this_storage.servers[i]->status == STATUS_ALIVE)
+    struct lux_server* server = _this_storage.servers[i];
+    if (server->status == STATUS_ALIVE)
     {
-      res = get_server_fd(i);
+      res = get_server_fd(server);
       if (res != -1)
         break;
     }
@@ -136,9 +141,10 @@ struct raid_one_live_sockets get_live_sockets()
   result.count = 0;
   for (int i = 0; i < 2; i++)
   {
-    if (_this_storage.servers[i]->status == STATUS_ALIVE)
+    struct lux_server* server = _this_storage.servers[i];
+    if (server->status == STATUS_ALIVE)
     {
-      int sock_fd = get_server_fd(i);
+      int sock_fd = get_server_fd(server);
       if (sock_fd != -1)
         result.sock_fd[result.count++] = sock_fd;
     }

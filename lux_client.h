@@ -23,7 +23,7 @@ struct storage_info {
 
 struct client_info {
   char path_to_error_log[256];
-  int cache_size;
+  unsigned long long cache_size;
   int cache_replacement;
   int timeout;
   int storage_count;

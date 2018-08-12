@@ -13,7 +13,7 @@
 #include "lux_client.h"
 #include "lux_fuse.c"
 
-void config_servers(struct storage_info * storage)
+void config_servers(struct storage_info *storage)
 {
   for (int i = 0; i < storage->server_count; i++)
   {
@@ -22,15 +22,27 @@ void config_servers(struct storage_info * storage)
     server_adress.sin_family = AF_INET;
     server_adress.sin_port = storage->servers[i]->port;
     server_adress.sin_addr.s_addr = inet_addr(storage->servers[i]->server_ip);
-    storage->servers[i]->server_adress = server_adress;  
+    storage->servers[i]->server_adress = server_adress;
   }
+    struct sockaddr_in server_adress;
+
+    server_adress.sin_family = AF_INET;
+    server_adress.sin_port = storage->hotswap->port;
+    server_adress.sin_addr.s_addr = inet_addr(storage->hotswap->server_ip);
+    storage->hotswap->server_adress = server_adress;
+
 }
 
 void print_client_info()
 {
+  printf("=====================================\n");
   printf("%d storages.\n", _lux_client_info.storage_count);
+  printf("cache size: %lld.\n", _lux_client_info.cache_size);
+  printf("path to errorlog: %s.\n", _lux_client_info.path_to_error_log);
+  printf("timeout: %d seconds.\n", _lux_client_info.timeout);
   for (int i = 0; i < _lux_client_info.storage_count; i++)
   {
+    printf("-------------------------------------\n");
     struct storage_info *st = _lux_client_info.storages[i];
     printf("name %s\n", st->storage_name);
     printf("raid %d\n", st->raid);
@@ -38,10 +50,12 @@ void print_client_info()
     printf("mountpoint %s\n", st->mountpoint);
     for (int j = 0; j < st->server_count; j++)
     {
-      printf("%s:%d\n", st->servers[j]->server_ip, st->servers[j]->port);
+      printf("%s:%d\n", st->servers[j]->server_ip, htons(st->servers[j]->port));
     }
-    printf("hotswap %s:%d\n", st->hotswap->server_ip, st->hotswap->port);
+    printf("hotswap %s:%d\n", st->hotswap->server_ip, htons(st->hotswap->port));
+    printf("-------------------------------------\n");
   }
+  printf("=====================================\n");
 }
 
 int parse_config_file(int config_fd)
@@ -57,7 +71,22 @@ int parse_config_file(int config_fd)
   struct storage_info *current_storage = NULL;
   while (token != NULL)
   {
-    if (strcmp(token, "diskname") == 0)
+    if (strcmp(token, "errorlog") == 0)
+    {
+      token = strtok(NULL, delims);
+      strcpy(_lux_client_info.path_to_error_log, token);
+    }
+    else if (strcmp(token, "cache_size") == 0)
+    {
+      token = strtok(NULL, delims);
+      _lux_client_info.cache_size = atoll(token);
+    }
+    else if (strcmp(token, "timeout") == 0)
+    {
+      token = strtok(NULL, delims);
+      _lux_client_info.timeout = atoi(token);
+    }
+    else if (strcmp(token, "diskname") == 0)
     {
       current_storage = malloc(sizeof(struct storage_info));
       _lux_client_info.storages[current_storage_index] = current_storage;
@@ -102,7 +131,7 @@ int parse_config_file(int config_fd)
       token = strtok(NULL, delims);
       hotswap_server = malloc(sizeof(struct lux_server));
       strcpy(hotswap_server->server_ip, token);
-      hotswap_server->port = atoi(strtok(NULL, delims));
+      hotswap_server->port = htons(atoi(strtok(NULL, delims)));
       current_storage->hotswap = hotswap_server;
     }
     token = strtok(NULL, delims);
@@ -150,5 +179,5 @@ int main(int argc, char **argv)
     }
   }
 
-  // print_client_info();
+  print_client_info();
 }

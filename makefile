@@ -11,6 +11,9 @@ server1:
 server2:
 	./lux_server 127.0.0.1 10002 ./server2_dir
 
+hotswap:
+	./lux_server 127.0.0.1 11111 ./hotswap_dir
+
 unmount:
 	fusermount -u ./mountpoint1
 
