@@ -88,8 +88,7 @@ int parse_config_file(int config_fd)
         cur_server = malloc(sizeof(struct lux_server));
         strcpy(cur_server->server_ip, token);
         cur_server->port = htons(atoi(strtok(NULL, delims)));
-        cur_server->downtime = 0;
-        cur_server->alive = 1;
+        cur_server->status = STATUS_ALIVE;
         current_storage->servers[server_count] = cur_server;
         server_count++;
         token = strtok(NULL, delims);

@@ -9,6 +9,7 @@
 #include <sys/socket.h>
 #include <sys/sendfile.h>
 #include <signal.h>
+#include <pthread.h>
 
 #include "lux_client.h"
 #include "lux_fuse.h"
@@ -41,28 +42,52 @@ struct raid_one_input generate_server_input(
   return result;
 }
 
+void *monitor_routine(void *args)
+{
+  struct lux_server *this_server = (struct lux_server *)args;
+  while (1)
+  {
+    sleep(1);
+  }
+}
+
+void monitor_degraded_server(int server_index)
+{
+  struct lux_server *this_server = _this_storage.servers[server_index];
+  this_server->status = STATUS_DEGRADED;
+  this_server->fail_time = time(NULL);
+  pthread_t thread_id;
+  pthread_create(&thread_id, NULL, monitor_routine, (void *)this_server);
+}
+
+int get_server_fd(int index)
+{
+  if (_this_storage.servers[index]->status == STATUS_ALIVE)
+  {
+    int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
+    if (connect(sock_fd, (struct sockaddr *)&_this_storage.servers[index]->server_adress, sizeof(struct sockaddr_in)) != -1)
+    {
+      return sock_fd;
+    }
+    else
+    {
+      monitor_degraded_server(index);
+      close(sock_fd);
+    }
+  }
+  return -1;
+}
+
 /* return a socket fd to a live server, -1 if failed to connect with both servers.
    caller's responsible to close the fd. */
 int get_live_server_fd()
 {
-  for (int i = 0; i < 2; i++)
-  {
-    if (_this_storage.servers[i]->alive)
-    {
-      int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
-      int res = connect(sock_fd, (struct sockaddr *)&_this_storage.servers[i]->server_adress, sizeof(struct sockaddr_in));
-
-      if (res != -1)
-      {
-        return sock_fd;
-      }
-      else
-      {
-        close(sock_fd);
-      }
-    }
+  int res = -1;
+  for (int i = 0; i < 2; i++) {
+    res = get_server_fd(i);
+    if (res != -1) break;
   }
-  return -1;
+  return res;
 }
 
 struct raid_one_live_sockets get_live_sockets()
@@ -71,20 +96,8 @@ struct raid_one_live_sockets get_live_sockets()
   result.count = 0;
   for (int i = 0; i < 2; i++)
   {
-    if (_this_storage.servers[i]->alive)
-    {
-      int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
-      int res = connect(sock_fd, (struct sockaddr *)&_this_storage.servers[i]->server_adress, sizeof(struct sockaddr_in));
-
-      if (res != -1)
-      {
-        result.sock_fd[result.count++] = sock_fd;
-      }
-      else
-      {
-        close(sock_fd);
-      }
-    }
+    int sock_fd = get_server_fd(i);
+    if (sock_fd != -1) result.sock_fd[result.count++] = sock_fd;
   }
   return result;
 }
@@ -132,8 +145,7 @@ int lux_init_server(int i)
   printf("attemting (init) contact with server%s:%d.\n", _this_storage.servers[i]->server_ip, _this_storage.servers[i]->port);
   fflush(stdout);
 
-  if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 
-  || send(socks.sock_fd[i], &_this_storage, sizeof(struct storage_info), 0) < 0)
+  if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || send(socks.sock_fd[i], &_this_storage, sizeof(struct storage_info), 0) < 0)
     return handle_errors(socks);
 
   printf("connected to server: %s:%d.\n", _this_storage.servers[i]->server_ip, _this_storage.servers[i]->port);
@@ -434,9 +446,9 @@ static struct fuse_operations hello_oper = {
 int run_storage_raid_one(struct storage_info *storage_info)
 {
   _this_storage = *storage_info;
-  for (int i = 0; i < 2; i++) {
+  /*for (int i = 0; i < 2; i++) {
     lux_init_server(i);
-  }
+  }*/
   char **args = malloc(3 * sizeof(char *));
   args[0] = strdup("useless");
   args[1] = _this_storage.mountpoint;

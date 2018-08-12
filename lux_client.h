@@ -6,8 +6,8 @@
 struct lux_server {
   char server_ip[32];
   uint16_t port;
-  int downtime;
-  int alive;
+  time_t fail_time;
+  int status;
   int socket_fd;
   struct sockaddr_in server_adress;
 };

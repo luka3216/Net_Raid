@@ -19,6 +19,9 @@
 #define CREATE 11
 #define UTIMENS 12
 #define MKDIR 13
+#define STATUS_ALIVE 0
+#define STATUS_DEGRADED 1
+#define STATUS_DEAD 2
 
 const char commands[14][16] = {"init", "getattr", "readdir", "open", "read", "access", "write", "truncate", "rename", "unlink", "rmdir", "mknod", "utimens", "mkdir"};
 
