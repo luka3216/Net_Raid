@@ -2,6 +2,7 @@
 #define LUX_FUSE_H
 
 struct storage_info _this_storage;
+int get_server_fd(int index);
 
 
 

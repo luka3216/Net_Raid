@@ -44,34 +44,57 @@ struct raid_one_input generate_server_input(
 
 void *monitor_routine(void *args)
 {
-  struct lux_server *this_server = (struct lux_server *)args;
+  int server_index = *(int *)args;
+  struct lux_server *this_server = _this_storage.servers[server_index];
   while (1)
   {
     sleep(1);
+    if (this_server->status == STATUS_DEGRADED)
+    {
+      int time_since_fail = difftime(time(NULL), this_server->fail_time);
+      int res = get_server_fd(server_index);
+      if (res != -1)
+      {
+        printf("connection restored with server: %s:%d after %d seconds\n", this_server->server_ip, this_server->port, time_since_fail);
+        this_server->status = STATUS_ALIVE;
+        close(res);
+      }
+      else
+      {
+        printf("coudln't connect with server: %s:%d for %d seconds\n", this_server->server_ip, this_server->port, time_since_fail);
+      }
+    }
   }
+  return NULL;
 }
 
-void monitor_degraded_server(int server_index)
+int monitor_server(int server_index)
 {
-  struct lux_server *this_server = _this_storage.servers[server_index];
-  this_server->status = STATUS_DEGRADED;
-  this_server->fail_time = time(NULL);
+  //struct lux_server *this_server = _this_storage.servers[server_index];
+  // this_server->status = STATUS_DEGRADED;
+  // this_server->fail_time = time(NULL);
   pthread_t thread_id;
-  pthread_create(&thread_id, NULL, monitor_routine, (void *)this_server);
+  int* buf = malloc(sizeof(int));
+  memcpy(buf, &server_index, sizeof(int));
+  pthread_create(&thread_id, NULL, monitor_routine, (void *)buf);
+  return 0;
 }
 
 int get_server_fd(int index)
 {
-  if (_this_storage.servers[index]->status == STATUS_ALIVE)
+  struct lux_server * this_server = _this_storage.servers[index];
+  if (this_server->status == STATUS_ALIVE
+  || this_server->status == STATUS_DEGRADED)
   {
     int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
-    if (connect(sock_fd, (struct sockaddr *)&_this_storage.servers[index]->server_adress, sizeof(struct sockaddr_in)) != -1)
+    if (connect(sock_fd, (struct sockaddr *)&this_server->server_adress, sizeof(struct sockaddr_in)) != -1)
     {
       return sock_fd;
     }
     else
     {
-      monitor_degraded_server(index);
+      if (this_server->status == STATUS_ALIVE) this_server->fail_time = time(NULL);
+      this_server->status = STATUS_DEGRADED;
       close(sock_fd);
     }
   }
@@ -83,9 +106,11 @@ int get_server_fd(int index)
 int get_live_server_fd()
 {
   int res = -1;
-  for (int i = 0; i < 2; i++) {
+  for (int i = 0; i < 2; i++)
+  {
     res = get_server_fd(i);
-    if (res != -1) break;
+    if (res != -1)
+      break;
   }
   return res;
 }
@@ -97,7 +122,8 @@ struct raid_one_live_sockets get_live_sockets()
   for (int i = 0; i < 2; i++)
   {
     int sock_fd = get_server_fd(i);
-    if (sock_fd != -1) result.sock_fd[result.count++] = sock_fd;
+    if (sock_fd != -1)
+      result.sock_fd[result.count++] = sock_fd;
   }
   return result;
 }
@@ -446,9 +472,9 @@ static struct fuse_operations hello_oper = {
 int run_storage_raid_one(struct storage_info *storage_info)
 {
   _this_storage = *storage_info;
-  /*for (int i = 0; i < 2; i++) {
-    lux_init_server(i);
-  }*/
+  for (int i = 0; i < 2; i++) {
+    monitor_server(i);
+  }
   char **args = malloc(3 * sizeof(char *));
   args[0] = strdup("useless");
   args[1] = _this_storage.mountpoint;
