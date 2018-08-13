@@ -42,116 +42,6 @@ struct raid_one_input generate_server_input(
   return result;
 }
 
-void *monitor_routine(void *args)
-{
-  int server_index = *(int *)args;
-  struct lux_server *this_server = _this_storage.servers[server_index];
-  while (1)
-  {
-    sleep(1);
-    int sock_fd = get_server_fd(this_server);
-    if (this_server->status == STATUS_ALIVE)
-    {
-      if (sock_fd == -1)
-      {
-        this_server->status = STATUS_DEGRADED;
-        this_server->fail_time = time(NULL);
-        printf("connection failed with server: %s:%d.\n", this_server->server_ip, this_server->port);
-      }
-      else
-      {
-        struct raid_one_input input = generate_server_input(DUMMY, NULL, NULL, 0, 0, 0, 0, NULL, 0);
-        send(sock_fd, &input, sizeof(struct raid_one_input), 0);
-        close(sock_fd);
-      }
-    }
-    else if (this_server->status == STATUS_DEGRADED)
-    {
-      int time_since_fail = difftime(time(NULL), this_server->fail_time);
-      if (sock_fd == -1)
-      {
-        printf("coudln't connect with server: %s:%d for %d seconds\n", this_server->server_ip, this_server->port, time_since_fail);
-        if (time_since_fail >= _lux_client_info.timeout) {
-          _this_storage.servers[server_index] = _this_storage.hotswap;
-          this_server = _this_storage.servers[server_index];
-          printf("replaced dead server with hotswap server: %s:%d.\n", this_server->server_ip, this_server->port);
-        }
-      }
-      else
-      {
-        this_server->status = STATUS_ALIVE;
-
-        struct raid_one_input input = generate_server_input(DUMMY, NULL, NULL, 0, 0, 0, 0, NULL, 0);
-        send(sock_fd, &input, sizeof(struct raid_one_input), 0);
-        close(sock_fd);
-
-        printf("connection restored with server: %s:%d after %d seconds\n", this_server->server_ip, this_server->port, time_since_fail);
-      }
-    }
-  }
-  return NULL;
-}
-
-int monitor_server(int server_index)
-{
-  pthread_t thread_id;
-  int *buf = malloc(sizeof(int));
-  memcpy(buf, &server_index, sizeof(int));
-  pthread_create(&thread_id, NULL, monitor_routine, (void *)buf);
-  return 0;
-}
-
-int get_server_fd(struct lux_server* this_server)
-{
-  {
-    int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
-    if (connect(sock_fd, (struct sockaddr *)&this_server->server_adress, sizeof(struct sockaddr_in)) != -1)
-    {
-      return sock_fd;
-    }
-    else
-    {
-      close(sock_fd);
-    }
-  }
-  return -1;
-}
-
-/* return a socket fd to a live server, -1 if failed to connect with both servers.
-   caller's responsible to close the fd. */
-int get_live_server_fd()
-{
-  int res = -1;
-  for (int i = 0; i < 2; i++)
-  {
-    struct lux_server* server = _this_storage.servers[i];
-    if (server->status == STATUS_ALIVE)
-    {
-      res = get_server_fd(server);
-      if (res != -1)
-        break;
-    }
-  }
-  return res;
-}
-
-struct raid_one_live_sockets get_live_sockets()
-{
-  struct raid_one_live_sockets result;
-  result.count = 0;
-  for (int i = 0; i < 2; i++)
-  {
-    struct lux_server* server = _this_storage.servers[i];
-    if (server->status == STATUS_ALIVE)
-    {
-      int sock_fd = get_server_fd(server);
-      if (sock_fd != -1)
-        result.sock_fd[result.count++] = sock_fd;
-    }
-  }
-  return result;
-}
-
 int handle_error(int sock_fd)
 {
   close(sock_fd);
@@ -183,6 +73,159 @@ int handle_returns(struct raid_one_live_sockets socks, struct raid_one_response 
       res = responses[i].error;
   }
   return -res;
+}
+
+int copy_routine(char *path, int sock_fd_from, int sock_fd_to)
+{
+  struct raid_one_input input = generate_server_input(READDIR, path, NULL, 0, 0, 0, 0, NULL, 0);
+  struct raid_one_directories_response response;
+
+  if (send(sock_fd_from, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_from, &response, sizeof(struct raid_one_directories_response), 0) < 0)
+    return handle_error(sock_fd_from);
+
+  for (int i = 0; i < response.size; i++)
+  {
+    if (S_ISDIR(response.stats[i].st_mode))
+    {
+      if (strstr(response.filenames[i], ".") != NULL) continue;
+      char path_tmp[256];
+      sprintf(path_tmp, "%s%s", path, response.filenames[i]);
+      printf("making dir %s on hotswap.\n", path_tmp);
+      struct raid_one_input input = generate_server_input(MKDIR, path_tmp, NULL, 0, 0, response.stats[i].st_mode, 0, NULL, 0);
+
+      struct raid_one_response response;
+      if (send(sock_fd_to, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_to, &response, sizeof(struct raid_one_response), 0) < 0)
+        return handle_error(sock_fd_to);
+
+      copy_routine(path_tmp, sock_fd_from, sock_fd_to);
+    }
+  }
+  return 0;
+}
+
+int copy_server_contents(struct lux_server *from, struct lux_server *to)
+{
+  int sock_fd_from = get_server_fd(from);
+  int sock_fd_to = get_server_fd(to);
+
+  if (sock_fd_from == -1 || sock_fd_to == -1)
+  {
+    printf("fatal connection failure. closing application.\n");
+    exit(0);
+  }
+  return copy_routine("/", sock_fd_from, sock_fd_to);
+}
+
+void *monitor_routine(void *args)
+{
+  int server_index = *(int *)args;
+  struct lux_server *this_server = _this_storage.servers[server_index];
+  while (1)
+  {
+    sleep(1);
+    int sock_fd = get_server_fd(this_server);
+    if (this_server->status == STATUS_ALIVE)
+    {
+      if (sock_fd == -1)
+      {
+        this_server->status = STATUS_DEGRADED;
+        this_server->fail_time = time(NULL);
+        printf("connection failed with server: %s:%d.\n", this_server->server_ip, this_server->port);
+      }
+      else
+      {
+        struct raid_one_input input = generate_server_input(DUMMY, NULL, NULL, 0, 0, 0, 0, NULL, 0);
+        send(sock_fd, &input, sizeof(struct raid_one_input), 0);
+        close(sock_fd);
+      }
+    }
+    else if (this_server->status == STATUS_DEGRADED)
+    {
+      int time_since_fail = difftime(time(NULL), this_server->fail_time);
+      if (sock_fd == -1)
+      {
+        printf("coudln't connect with server: %s:%d for %d seconds\n", this_server->server_ip, this_server->port, time_since_fail);
+        if (time_since_fail >= _lux_client_info.timeout)
+        {
+          copy_server_contents(_this_storage.servers[(server_index + 1) % 2], _this_storage.hotswap);
+          _this_storage.servers[server_index] = _this_storage.hotswap;
+          this_server = _this_storage.servers[server_index];
+          printf("replaced dead server with hotswap server: %s:%d.\n", this_server->server_ip, this_server->port);
+        }
+      }
+      else
+      {
+        this_server->status = STATUS_ALIVE;
+
+        struct raid_one_input input = generate_server_input(DUMMY, NULL, NULL, 0, 0, 0, 0, NULL, 0);
+        send(sock_fd, &input, sizeof(struct raid_one_input), 0);
+        close(sock_fd);
+
+        printf("connection restored with server: %s:%d after %d seconds\n", this_server->server_ip, this_server->port, time_since_fail);
+      }
+    }
+  }
+  return NULL;
+}
+
+int monitor_server(int server_index)
+{
+  pthread_t thread_id;
+  int *buf = malloc(sizeof(int));
+  memcpy(buf, &server_index, sizeof(int));
+  pthread_create(&thread_id, NULL, monitor_routine, (void *)buf);
+  return 0;
+}
+
+int get_server_fd(struct lux_server *this_server)
+{
+  {
+    int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
+    if (connect(sock_fd, (struct sockaddr *)&this_server->server_adress, sizeof(struct sockaddr_in)) != -1)
+    {
+      return sock_fd;
+    }
+    else
+    {
+      close(sock_fd);
+    }
+  }
+  return -1;
+}
+
+/* return a socket fd to a live server, -1 if failed to connect with both servers.
+   caller's responsible to close the fd. */
+int get_live_server_fd()
+{
+  int res = -1;
+  for (int i = 0; i < 2; i++)
+  {
+    struct lux_server *server = _this_storage.servers[i];
+    if (server->status == STATUS_ALIVE)
+    {
+      res = get_server_fd(server);
+      if (res != -1)
+        break;
+    }
+  }
+  return res;
+}
+
+struct raid_one_live_sockets get_live_sockets()
+{
+  struct raid_one_live_sockets result;
+  result.count = 0;
+  for (int i = 0; i < 2; i++)
+  {
+    struct lux_server *server = _this_storage.servers[i];
+    if (server->status == STATUS_ALIVE)
+    {
+      int sock_fd = get_server_fd(server);
+      if (sock_fd != -1)
+        result.sock_fd[result.count++] = sock_fd;
+    }
+  }
+  return result;
 }
 
 int lux_init_server(int i)
