@@ -12,8 +12,10 @@
 #include <dirent.h>
 #include <sys/sendfile.h>
 #include <errno.h>
+#include <sys/xattr.h>
 #include "lux_client.h"
 #include "lux_common.h"
+#include "Md5.c"
 
 char _path_to_storage[256];
 
@@ -170,6 +172,19 @@ int handle_write(struct raid_one_input input, int client_socket)
   write(fd, buff, input.size);
   
   close(fd);
+
+  MD5_CTX mdContext = MDFile(path);
+
+   for (int i = 0; i < 16; i++) 
+    printf("%02x", mdContext.digest[i]);
+  if (setxattr(path, "hash", mdContext.digest, 16 * sizeof(unsigned char), 0) == -1) 
+    printf("\n%s\n", strerror(errno));
+  unsigned char b[16];
+  getxattr(path, "hash", b, 16 * sizeof(unsigned char));
+  for (int i = 0; i < 16; i++) {
+    printf("%02x", b[i]);
+  }
+
 }
 
 int handle_truncate(struct raid_one_input input, int client_socket)

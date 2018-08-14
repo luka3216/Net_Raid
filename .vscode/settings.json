@@ -4,6 +4,7 @@
     "raid_one_manager.h": "c",
     "types.h": "c",
     "fcntl.h": "c",
-    "semaphore.h": "c"
+    "semaphore.h": "c",
+    "lux_common.h": "c"
   }
 }
