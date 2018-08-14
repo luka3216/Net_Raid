@@ -175,15 +175,7 @@ int handle_write(struct raid_one_input input, int client_socket)
 
   MD5_CTX mdContext = MDFile(path);
 
-   for (int i = 0; i < 16; i++) 
-    printf("%02x", mdContext.digest[i]);
-  if (setxattr(path, "hash", mdContext.digest, 16 * sizeof(unsigned char), 0) == -1) 
-    printf("\n%s\n", strerror(errno));
-  unsigned char b[16];
-  getxattr(path, "hash", b, 16 * sizeof(unsigned char));
-  for (int i = 0; i < 16; i++) {
-    printf("%02x", b[i]);
-  }
+  setxattr(path, "user.hash", mdContext.digest, 16 * sizeof(unsigned char), 0);
 
 }
 
