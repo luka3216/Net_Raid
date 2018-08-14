@@ -1,7 +1,7 @@
 errorlog = /path/to/error.log
 cache_size = 1024M
 cache_replacment = rlu
-timeout = 4
+timeout = 8
 
 diskname = STORAGE1
 mountpoint = ./mountpoint1/

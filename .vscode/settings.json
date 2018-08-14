@@ -3,6 +3,7 @@
     "socket.h": "c",
     "raid_one_manager.h": "c",
     "types.h": "c",
-    "fcntl.h": "c"
+    "fcntl.h": "c",
+    "semaphore.h": "c"
   }
 }

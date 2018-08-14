@@ -10,6 +10,11 @@
 #include <sys/sendfile.h>
 #include <signal.h>
 #include <pthread.h>
+#include <semaphore.h>
+
+sem_t replication_defender;
+int copier_demands_freedom;
+int pending_requests;
 
 #include "lux_client.h"
 #include "lux_fuse.h"
@@ -56,6 +61,9 @@ int handle_return(int sock_fd, int error)
 
 int handle_errors(struct raid_one_live_sockets socks)
 {
+  sem_wait(&replication_defender);
+  pending_requests--;
+  sem_post(&replication_defender);
   for (int i = 0; i < socks.count; i++)
   {
     close(socks.sock_fd[i]);
@@ -65,6 +73,9 @@ int handle_errors(struct raid_one_live_sockets socks)
 
 int handle_returns(struct raid_one_live_sockets socks, struct raid_one_response responses[2])
 {
+  sem_wait(&replication_defender);
+  pending_requests--;
+  sem_post(&replication_defender);
   int res = 0;
   for (int i = 0; i < socks.count; i++)
   {
@@ -123,7 +134,7 @@ int copy_routine(char *p, struct lux_server *from, struct lux_server *to)
     }
     else if (S_ISREG(response_dir.stats[i].st_mode))
     {
-      struct raid_one_input input = generate_server_input(CREATE, path_tmp, NULL, 0, 0, response_dir.stats[i].st_mode, response_dir.stats[i].st_dev, NULL, 0);
+      struct raid_one_input input_mknod = generate_server_input(CREATE, path_tmp, NULL, 0, 0, response_dir.stats[i].st_mode, response_dir.stats[i].st_dev, NULL, 0);
       struct raid_one_response response;
 
       int sock_fd_to = get_server_fd(to);
@@ -133,7 +144,21 @@ int copy_routine(char *p, struct lux_server *from, struct lux_server *to)
         printf("fatal connection failure. closing application.\n");
         exit(0);
       }
-      if (send(sock_fd_to, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_to, &response, sizeof(struct raid_one_response), 0) < 0)
+      if (send(sock_fd_to, &input_mknod, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_to, &response, sizeof(struct raid_one_response), 0) < 0)
+        return handle_error(sock_fd_to);
+
+      close(sock_fd_to);
+
+      struct raid_one_input input_trunc = generate_server_input(TRUNCATE, path_tmp, NULL, 0, 0, 0, 0, NULL, 0);
+
+      sock_fd_to = get_server_fd(to);
+
+      if (sock_fd_to == -1)
+      {
+        printf("fatal connection failure. closing application.\n");
+        exit(0);
+      }
+      if (send(sock_fd_to, &input_trunc, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_to, &response, sizeof(struct raid_one_response), 0) < 0)
         return handle_error(sock_fd_to);
 
       close(sock_fd_to);
@@ -184,9 +209,32 @@ int copy_routine(char *p, struct lux_server *from, struct lux_server *to)
   return 0;
 }
 
+int increment_pending_number() {
+  sem_wait(&replication_defender);
+  if (copier_demands_freedom) {
+    sem_post(&replication_defender);
+    return 1;
+  }
+  else {
+    sem_post(&replication_defender);
+    pending_requests++;
+    return 0;
+  }
+}
+
 int copy_server_contents(struct lux_server *from, struct lux_server *to)
 {
-  return copy_routine("", from, to);
+  sem_wait(&replication_defender);
+  copier_demands_freedom = 1;
+  sem_post(&replication_defender);
+  while (pending_requests > 0) {
+    continue;
+  }
+  copy_routine("", from, to);
+  sem_wait(&replication_defender);
+  copier_demands_freedom = 0;
+  sem_post(&replication_defender);
+  return 0;
 }
 
 void *monitor_routine(void *args)
@@ -230,13 +278,14 @@ void *monitor_routine(void *args)
       }
       else
       {
-        this_server->status = STATUS_ALIVE;
-
         struct raid_one_input input = generate_server_input(DUMMY, NULL, NULL, 0, 0, 0, 0, NULL, 0);
         send(sock_fd, &input, sizeof(struct raid_one_input), 0);
         close(sock_fd);
-
         printf("connection restored with server: %s:%d after %d seconds\n", this_server->server_ip, this_server->port, time_since_fail);
+        printf("replicating data to reconnected server.\n");
+        copy_server_contents(_this_storage.servers[(server_index + 1) % 2], this_server);
+        this_server->status = STATUS_ALIVE;
+        printf("replication complete\n");
       }
     }
   }
@@ -418,6 +467,9 @@ static int lux_read(const char *path, char *buf, size_t size, off_t offset,
 static int lux_write(const char *path, const char *buf, size_t size, off_t offset,
                      struct fuse_file_info *fi)
 {
+  int ret_stat = increment_pending_number();
+  if (ret_stat)
+    return -EBUSY;
   (void)fi;
 
   server_sockets socks = get_live_sockets(_this_storage.servers);
@@ -458,6 +510,9 @@ static int lux_access(const char *path, int flags)
 
 static int lux_truncate(const char *path, off_t size)
 {
+  int ret_stat = increment_pending_number();
+  if (ret_stat)
+    return -EBUSY;
   server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(TRUNCATE, path, NULL, size, 0, 0, 0, NULL, 0);
@@ -477,6 +532,9 @@ static int lux_truncate(const char *path, off_t size)
 
 static int lux_rename(const char *old, const char *new)
 {
+  int ret_stat = increment_pending_number();
+  if (ret_stat)
+    return -EBUSY;
   server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(RENAME, old, new, 0, 0, 0, 0, NULL, 0);
@@ -496,6 +554,9 @@ static int lux_rename(const char *old, const char *new)
 
 static int lux_unlink(const char *path)
 {
+  int ret_stat = increment_pending_number();
+  if (ret_stat)
+    return -EBUSY; 
   server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(UNLINK, path, NULL, 0, 0, 0, 0, NULL, 0);
@@ -515,6 +576,9 @@ static int lux_unlink(const char *path)
 
 static int lux_rmdir(const char *path)
 {
+  int ret_stat = increment_pending_number();
+  if (ret_stat)
+    return -EBUSY; 
   server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(RMDIR, path, NULL, 0, 0, 0, 0, NULL, 0);
@@ -534,6 +598,9 @@ static int lux_rmdir(const char *path)
 
 static int lux_mknod(const char *path, mode_t mode, dev_t dev)
 {
+  int ret_stat = increment_pending_number();
+  if (ret_stat)
+    return -EBUSY;
   server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(CREATE, path, NULL, 0, 0, mode, dev, NULL, 0);
@@ -553,6 +620,9 @@ static int lux_mknod(const char *path, mode_t mode, dev_t dev)
 
 static int lux_mkdir(const char *path, mode_t mode)
 {
+  int ret_stat = increment_pending_number();
+  if (ret_stat)
+    return -EBUSY;
   server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(MKDIR, path, NULL, 0, 0, mode, 0, NULL, 0);
@@ -572,6 +642,9 @@ static int lux_mkdir(const char *path, mode_t mode)
 
 static int lux_utimens(const char *path, const struct timespec tv[2])
 {
+  int ret_stat = increment_pending_number();
+  if (ret_stat)
+    return -EBUSY;
   server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(UTIMENS, path, NULL, 0, 0, 0, 0, tv, 0);
@@ -618,6 +691,9 @@ int run_storage_raid_one(struct storage_info *storage_info)
   {
     monitor_server(i);
   }
+  sem_init(&replication_defender, 0, 1);
+  pending_requests = 0;
+  copier_demands_freedom = 0;
   char **args = malloc(3 * sizeof(char *));
   args[0] = strdup("useless");
   args[1] = _this_storage.mountpoint;
