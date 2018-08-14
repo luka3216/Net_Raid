@@ -75,29 +75,110 @@ int handle_returns(struct raid_one_live_sockets socks, struct raid_one_response 
   return -res;
 }
 
-int copy_routine(char *path, int sock_fd_from, int sock_fd_to)
+int copy_routine(char *p, struct lux_server *from, struct lux_server *to)
 {
-  struct raid_one_input input = generate_server_input(READDIR, path, NULL, 0, 0, 0, 0, NULL, 0);
-  struct raid_one_directories_response response;
+  int sock_fd_from = get_server_fd(from);
+  char path[256];
 
-  if (send(sock_fd_from, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_from, &response, sizeof(struct raid_one_directories_response), 0) < 0)
+  if (sock_fd_from == -1)
+  {
+    printf("fatal connection failure. closing application.\n");
+    exit(0);
+  }
+  sprintf(path, "%s/", p);
+  struct raid_one_input input = generate_server_input(READDIR, path, NULL, 0, 0, 0, 0, NULL, 0);
+  struct raid_one_directories_response response_dir;
+
+  if (send(sock_fd_from, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_from, &response_dir, sizeof(struct raid_one_directories_response), 0) < 0)
     return handle_error(sock_fd_from);
 
-  for (int i = 0; i < response.size; i++)
-  {
-    if (S_ISDIR(response.stats[i].st_mode))
-    {
-      if (strstr(response.filenames[i], ".") != NULL) continue;
-      char path_tmp[256];
-      sprintf(path_tmp, "%s%s", path, response.filenames[i]);
-      printf("making dir %s on hotswap.\n", path_tmp);
-      struct raid_one_input input = generate_server_input(MKDIR, path_tmp, NULL, 0, 0, response.stats[i].st_mode, 0, NULL, 0);
+  close(sock_fd_from);
 
+  for (int i = 0; i < response_dir.size; i++)
+  {
+    char path_tmp[256];
+    sprintf(path_tmp, "%s%s", path, response_dir.filenames[i]);
+    if (S_ISDIR(response_dir.stats[i].st_mode))
+    {
+
+      if (strstr(response_dir.filenames[i], ".") != NULL)
+        continue;
+
+      struct raid_one_input input = generate_server_input(MKDIR, path_tmp, NULL, 0, 0, response_dir.stats[i].st_mode, 0, NULL, 0);
       struct raid_one_response response;
+
+      int sock_fd_to = get_server_fd(to);
+
+      if (sock_fd_to == -1)
+      {
+        printf("fatal connection failure. closing application.\n");
+        exit(0);
+      }
       if (send(sock_fd_to, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_to, &response, sizeof(struct raid_one_response), 0) < 0)
         return handle_error(sock_fd_to);
 
-      copy_routine(path_tmp, sock_fd_from, sock_fd_to);
+      close(sock_fd_to);
+
+      copy_routine(path_tmp, from, to);
+    }
+    else if (S_ISREG(response_dir.stats[i].st_mode))
+    {
+      struct raid_one_input input = generate_server_input(CREATE, path_tmp, NULL, 0, 0, response_dir.stats[i].st_mode, response_dir.stats[i].st_dev, NULL, 0);
+      struct raid_one_response response;
+
+      int sock_fd_to = get_server_fd(to);
+
+      if (sock_fd_to == -1)
+      {
+        printf("fatal connection failure. closing application.\n");
+        exit(0);
+      }
+      if (send(sock_fd_to, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_to, &response, sizeof(struct raid_one_response), 0) < 0)
+        return handle_error(sock_fd_to);
+
+      close(sock_fd_to);
+
+      off_t f_size = response_dir.stats[i].st_size;
+      off_t offse = 0;
+
+      char data_buffer[4096];
+
+      while (f_size > 0)
+      {
+        size_t req_size = 4096;
+        struct raid_one_input input = generate_server_input(READ, path_tmp, NULL, offse, req_size, 0, 0, NULL, 0);
+        int sock_fd_from = get_server_fd(from);
+
+        if (sock_fd_from == -1)
+        {
+          printf("fatal connection failure. closing application.\n");
+          exit(0);
+        }
+        if (send(sock_fd_from, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_from, data_buffer, req_size, 0) < 0)
+          return handle_error(sock_fd_from);
+
+        close(sock_fd_from);
+
+
+        req_size = (f_size > 4096) ? 4096 : f_size;
+        input = generate_server_input(WRITE, path_tmp, NULL, offse, req_size, 0, 0, NULL, 0);
+        struct raid_one_response response;
+        int sock_fd_to = get_server_fd(to);
+
+        if (sock_fd_to == -1)
+        {
+          printf("fatal connection failure. closing application.\n");
+          exit(0);
+        }
+        if (send(sock_fd_to, &input, sizeof(struct raid_one_input), 0) < 0 
+        || recv(sock_fd_to, &response, sizeof(struct raid_one_response), 0) < 0 
+        || send(sock_fd_to, data_buffer, req_size, 0) < 0)
+          return handle_error(sock_fd_to);
+
+        f_size -= 4096;
+        offse += 4096;
+        close(sock_fd_to);
+      }
     }
   }
   return 0;
@@ -105,15 +186,7 @@ int copy_routine(char *path, int sock_fd_from, int sock_fd_to)
 
 int copy_server_contents(struct lux_server *from, struct lux_server *to)
 {
-  int sock_fd_from = get_server_fd(from);
-  int sock_fd_to = get_server_fd(to);
-
-  if (sock_fd_from == -1 || sock_fd_to == -1)
-  {
-    printf("fatal connection failure. closing application.\n");
-    exit(0);
-  }
-  return copy_routine("/", sock_fd_from, sock_fd_to);
+  return copy_routine("", from, to);
 }
 
 void *monitor_routine(void *args)
@@ -147,7 +220,9 @@ void *monitor_routine(void *args)
         printf("coudln't connect with server: %s:%d for %d seconds\n", this_server->server_ip, this_server->port, time_since_fail);
         if (time_since_fail >= _lux_client_info.timeout)
         {
+          printf("replicating data to hotswap.\n");
           copy_server_contents(_this_storage.servers[(server_index + 1) % 2], _this_storage.hotswap);
+          printf("replication complete\n");
           _this_storage.servers[server_index] = _this_storage.hotswap;
           this_server = _this_storage.servers[server_index];
           printf("replaced dead server with hotswap server: %s:%d.\n", this_server->server_ip, this_server->port);
@@ -211,13 +286,13 @@ int get_live_server_fd()
   return res;
 }
 
-struct raid_one_live_sockets get_live_sockets()
+struct raid_one_live_sockets get_live_sockets(struct lux_server *servers[2])
 {
   struct raid_one_live_sockets result;
   result.count = 0;
   for (int i = 0; i < 2; i++)
   {
-    struct lux_server *server = _this_storage.servers[i];
+    struct lux_server *server = servers[i];
     if (server->status == STATUS_ALIVE)
     {
       int sock_fd = get_server_fd(server);
@@ -230,7 +305,7 @@ struct raid_one_live_sockets get_live_sockets()
 
 int lux_init_server(int i)
 {
-  server_sockets socks = get_live_sockets();
+  server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input;
   //input.command = INIT;
@@ -345,7 +420,7 @@ static int lux_write(const char *path, const char *buf, size_t size, off_t offse
 {
   (void)fi;
 
-  server_sockets socks = get_live_sockets();
+  server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(WRITE, path, NULL, offset, size, 0, 0, NULL, 0);
 
@@ -383,7 +458,7 @@ static int lux_access(const char *path, int flags)
 
 static int lux_truncate(const char *path, off_t size)
 {
-  server_sockets socks = get_live_sockets();
+  server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(TRUNCATE, path, NULL, size, 0, 0, 0, NULL, 0);
 
@@ -402,7 +477,7 @@ static int lux_truncate(const char *path, off_t size)
 
 static int lux_rename(const char *old, const char *new)
 {
-  server_sockets socks = get_live_sockets();
+  server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(RENAME, old, new, 0, 0, 0, 0, NULL, 0);
 
@@ -421,7 +496,7 @@ static int lux_rename(const char *old, const char *new)
 
 static int lux_unlink(const char *path)
 {
-  server_sockets socks = get_live_sockets();
+  server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(UNLINK, path, NULL, 0, 0, 0, 0, NULL, 0);
 
@@ -440,7 +515,7 @@ static int lux_unlink(const char *path)
 
 static int lux_rmdir(const char *path)
 {
-  server_sockets socks = get_live_sockets();
+  server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(RMDIR, path, NULL, 0, 0, 0, 0, NULL, 0);
 
@@ -459,7 +534,7 @@ static int lux_rmdir(const char *path)
 
 static int lux_mknod(const char *path, mode_t mode, dev_t dev)
 {
-  server_sockets socks = get_live_sockets();
+  server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(CREATE, path, NULL, 0, 0, mode, dev, NULL, 0);
 
@@ -478,7 +553,7 @@ static int lux_mknod(const char *path, mode_t mode, dev_t dev)
 
 static int lux_mkdir(const char *path, mode_t mode)
 {
-  server_sockets socks = get_live_sockets();
+  server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(MKDIR, path, NULL, 0, 0, mode, 0, NULL, 0);
 
@@ -497,7 +572,7 @@ static int lux_mkdir(const char *path, mode_t mode)
 
 static int lux_utimens(const char *path, const struct timespec tv[2])
 {
-  server_sockets socks = get_live_sockets();
+  server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(UTIMENS, path, NULL, 0, 0, 0, 0, tv, 0);
 
