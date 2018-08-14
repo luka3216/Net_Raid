@@ -46,8 +46,9 @@ struct raid_one_input
 
 struct raid_one_response
 {
-  struct stat stats[32];
   struct stat one_stat;
+  unsigned char recorded_hash[16];
+  unsigned char checked_hash[16];
   int size;
   int error;
 };

@@ -108,6 +108,12 @@ int handle_open(struct raid_one_input input, int client_socket)
 
   printf("sending open response.\n");
 
+  MD5_CTX mdContext = MDFile(path);
+
+  memcpy(response.checked_hash, mdContext.digest, 16 * sizeof(unsigned char));
+
+  getxattr(path, "user.hash", response.recorded_hash, 16 * sizeof(unsigned char));
+
   send(client_socket, &response, sizeof(struct raid_one_response), 0);
 }
 

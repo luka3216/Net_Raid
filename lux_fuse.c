@@ -183,7 +183,6 @@ int copy_routine(char *p, struct lux_server *from, struct lux_server *to)
 
         close(sock_fd_from);
 
-
         req_size = (f_size > 4096) ? 4096 : f_size;
         input = generate_server_input(WRITE, path_tmp, NULL, offse, req_size, 0, 0, NULL, 0);
         struct raid_one_response response;
@@ -194,9 +193,7 @@ int copy_routine(char *p, struct lux_server *from, struct lux_server *to)
           printf("fatal connection failure. closing application.\n");
           exit(0);
         }
-        if (send(sock_fd_to, &input, sizeof(struct raid_one_input), 0) < 0 
-        || recv(sock_fd_to, &response, sizeof(struct raid_one_response), 0) < 0 
-        || send(sock_fd_to, data_buffer, req_size, 0) < 0)
+        if (send(sock_fd_to, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_to, &response, sizeof(struct raid_one_response), 0) < 0 || send(sock_fd_to, data_buffer, req_size, 0) < 0)
           return handle_error(sock_fd_to);
 
         f_size -= 4096;
@@ -208,13 +205,16 @@ int copy_routine(char *p, struct lux_server *from, struct lux_server *to)
   return 0;
 }
 
-int increment_pending_number() {
+int increment_pending_number()
+{
   sem_wait(&replication_defender);
-  if (copier_demands_freedom) {
+  if (copier_demands_freedom)
+  {
     sem_post(&replication_defender);
     return 1;
   }
-  else {
+  else
+  {
     sem_post(&replication_defender);
     pending_requests++;
     return 0;
@@ -226,7 +226,8 @@ int copy_server_contents(struct lux_server *from, struct lux_server *to)
   sem_wait(&replication_defender);
   copier_demands_freedom = 1;
   sem_post(&replication_defender);
-  while (pending_requests > 0) {
+  while (pending_requests > 0)
+  {
     continue;
   }
   copy_routine("", from, to);
@@ -423,281 +424,378 @@ static int lux_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
   return handle_return(sock_fd, response.error);
 }
 
-static int lux_open(const char *path, struct fuse_file_info *fi)
+int copy_file(struct lux_server *from, struct lux_server *to, const char path[256])
 {
-  struct raid_one_input input = generate_server_input(OPEN, path, NULL, 0, 0, 0, 0, NULL, 0);
-
-  int sock_fd = get_live_server_fd();
-
-  printf("attemting (open) contact with server for path %s\n", path);
-  fflush(stdout);
-
+  struct raid_one_input input_getattr = generate_server_input(GETATTR, path, NULL, 0, 0, 0, 0, NULL, 0);
   struct raid_one_response response;
 
-  if (send(sock_fd, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd, &response, sizeof(struct raid_one_response), 0) < 0)
+  int sock_fd_from = get_server_fd(from);
+
+  if (sock_fd_from == -1)
   {
-    return handle_error(sock_fd);
+    printf("fatal connection failure. closing application.\n");
+    exit(0);
   }
+  if (send(sock_fd_from, &input_getattr, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_from, &response, sizeof(struct raid_one_response), 0) < 0)
+    return handle_error(sock_fd_from);
 
-  return handle_return(sock_fd, response.error);
-}
+  close(sock_fd_from);
 
-static int lux_read(const char *path, char *buf, size_t size, off_t offset,
-                    struct fuse_file_info *fi)
-{
-  (void)fi;
+  struct raid_one_input input_mknod = generate_server_input(CREATE, path, NULL, 0, 0, response.one_stat.st_mode, response.one_stat.st_dev, NULL, 0);
 
-  int sock_fd = get_live_server_fd();
+  int sock_fd_to = get_server_fd(to);
 
-  struct raid_one_input input = generate_server_input(READ, path, NULL, offset, size, 0, 0, NULL, 0);
-
-  printf("attemting (read) contact with server for path %s for %zu bytes.\n", path, size);
-  fflush(stdout);
-
-  if (send(sock_fd, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd, buf, size, 0) < 0)
+  if (sock_fd_to == -1)
   {
-    return handle_error(sock_fd);
+    printf("fatal connection failure. closing application.\n");
+    exit(0);
   }
+  if (send(sock_fd_to, &input_mknod, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_to, &response, sizeof(struct raid_one_response), 0) < 0)
+    return handle_error(sock_fd_to);
 
-  close(sock_fd);
-  return size;
-}
+  close(sock_fd_to);
 
-static int lux_write(const char *path, const char *buf, size_t size, off_t offset,
-                     struct fuse_file_info *fi)
-{
-  int ret_stat = increment_pending_number();
-  if (ret_stat)
-    return -EBUSY;
-  (void)fi;
+  struct raid_one_input input_trunc = generate_server_input(TRUNCATE, path, NULL, 0, 0, 0, 0, NULL, 0);
 
-  server_sockets socks = get_live_sockets(_this_storage.servers);
+  sock_fd_to = get_server_fd(to);
 
-  struct raid_one_input input = generate_server_input(WRITE, path, NULL, offset, size, 0, 0, NULL, 0);
-
-  struct raid_one_response responses[2];
-
-  printf("attemting (write) contact with server for path %s for %zu bytes.\n", path, size);
-  fflush(stdout);
-  for (int i = 0; i < socks.count; i++)
+  if (sock_fd_to == -1)
   {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0 || send(socks.sock_fd[i], buf, input.size, 0) < 0)
-      return handle_errors(socks);
+    printf("fatal connection failure. closing application.\n");
+    exit(0);
   }
-  int error = handle_returns(socks, responses);
-  return error == 0 ? size : error;
-}
+  if (send(sock_fd_to, &input_trunc, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_to, &response, sizeof(struct raid_one_response), 0) < 0)
+    return handle_error(sock_fd_to);
 
-static int lux_access(const char *path, int flags)
-{
-  struct raid_one_input input = generate_server_input(ACCESS, path, NULL, 0, 0, 0, 0, NULL, flags);
+  close(sock_fd_to);
 
-  int sock_fd = get_live_server_fd();
+  off_t f_size = response.one_stat.st_size;
+  off_t offse = 0;
 
-  printf("attemting (access) contact with server for path %s\n", path);
-  fflush(stdout);
+  char data_buffer[4096];
 
-  struct raid_one_response response;
-
-  if (send(sock_fd, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd, &response, sizeof(struct raid_one_response), 0) < 0)
+  while (f_size > 0)
   {
-    return handle_error(sock_fd);
+    size_t req_size = 4096;
+    struct raid_one_input input = generate_server_input(READ, path, NULL, offse, req_size, 0, 0, NULL, 0);
+    int sock_fd_from = get_server_fd(from);
+
+    if (sock_fd_from == -1)
+    {
+      printf("fatal connection failure. closing application.\n");
+      exit(0);
+    }
+    if (send(sock_fd_from, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_from, data_buffer, req_size, 0) < 0)
+      return handle_error(sock_fd_from);
+
+    close(sock_fd_from);
+
+    req_size = (f_size > 4096) ? 4096 : f_size;
+    input = generate_server_input(WRITE, path, NULL, offse, req_size, 0, 0, NULL, 0);
+    struct raid_one_response response;
+    int sock_fd_to = get_server_fd(to);
+
+    if (sock_fd_to == -1)
+    {
+      printf("fatal connection failure. closing application.\n");
+      exit(0);
+    }
+    if (send(sock_fd_to, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd_to, &response, sizeof(struct raid_one_response), 0) < 0 || send(sock_fd_to, data_buffer, req_size, 0) < 0)
+      return handle_error(sock_fd_to);
+
+    f_size -= 4096;
+    offse += 4096;
+    close(sock_fd_to);
   }
-
-  return handle_return(sock_fd, response.error);
-}
-
-static int lux_truncate(const char *path, off_t size)
-{
-  int ret_stat = increment_pending_number();
-  if (ret_stat)
-    return -EBUSY;
-  server_sockets socks = get_live_sockets(_this_storage.servers);
-
-  struct raid_one_input input = generate_server_input(TRUNCATE, path, NULL, size, 0, 0, 0, NULL, 0);
-
-  struct raid_one_response responses[2];
-
-  printf("attemting (truncate) contact with server for path %s for %zu bytes.\n", path, size);
-  fflush(stdout);
-  for (int i = 0; i < socks.count; i++)
-  {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
-      return handle_errors(socks);
-  }
-
-  return handle_returns(socks, responses);
-}
-
-static int lux_rename(const char *old, const char *new)
-{
-  int ret_stat = increment_pending_number();
-  if (ret_stat)
-    return -EBUSY;
-  server_sockets socks = get_live_sockets(_this_storage.servers);
-
-  struct raid_one_input input = generate_server_input(RENAME, old, new, 0, 0, 0, 0, NULL, 0);
-
-  struct raid_one_response responses[2];
-
-  printf("attemting (rename) contact with server for path %s for bytes.\n", old);
-  fflush(stdout);
-  for (int i = 0; i < socks.count; i++)
-  {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
-      return handle_errors(socks);
-  }
-
-  return handle_returns(socks, responses);
-}
-
-static int lux_unlink(const char *path)
-{
-  int ret_stat = increment_pending_number();
-  if (ret_stat)
-    return -EBUSY; 
-  server_sockets socks = get_live_sockets(_this_storage.servers);
-
-  struct raid_one_input input = generate_server_input(UNLINK, path, NULL, 0, 0, 0, 0, NULL, 0);
-
-  struct raid_one_response responses[2];
-
-  printf("attemting (unlink) contact with server for path %s for bytes.\n", path);
-  fflush(stdout);
-  for (int i = 0; i < socks.count; i++)
-  {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
-      return handle_errors(socks);
-  }
-
-  return handle_returns(socks, responses);
-}
-
-static int lux_rmdir(const char *path)
-{
-  int ret_stat = increment_pending_number();
-  if (ret_stat)
-    return -EBUSY; 
-  server_sockets socks = get_live_sockets(_this_storage.servers);
-
-  struct raid_one_input input = generate_server_input(RMDIR, path, NULL, 0, 0, 0, 0, NULL, 0);
-
-  struct raid_one_response responses[2];
-
-  printf("attemting (rmdir) contact with server for path %s for bytes.\n", path);
-  fflush(stdout);
-  for (int i = 0; i < socks.count; i++)
-  {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
-      return handle_errors(socks);
-  }
-
-  return handle_returns(socks, responses);
-}
-
-static int lux_mknod(const char *path, mode_t mode, dev_t dev)
-{
-  int ret_stat = increment_pending_number();
-  if (ret_stat)
-    return -EBUSY;
-  server_sockets socks = get_live_sockets(_this_storage.servers);
-
-  struct raid_one_input input = generate_server_input(CREATE, path, NULL, 0, 0, mode, dev, NULL, 0);
-
-  struct raid_one_response responses[2];
-
-  printf("attemting (mknod) contact with server for path %s for bytes.\n", path);
-  fflush(stdout);
-  for (int i = 0; i < socks.count; i++)
-  {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
-      return handle_errors(socks);
-  }
-
-  return handle_returns(socks, responses);
-}
-
-static int lux_mkdir(const char *path, mode_t mode)
-{
-  int ret_stat = increment_pending_number();
-  if (ret_stat)
-    return -EBUSY;
-  server_sockets socks = get_live_sockets(_this_storage.servers);
-
-  struct raid_one_input input = generate_server_input(MKDIR, path, NULL, 0, 0, mode, 0, NULL, 0);
-
-  struct raid_one_response responses[2];
-
-  printf("attemting (mkdir) contact with server for path %s for bytes.\n", path);
-  fflush(stdout);
-  for (int i = 0; i < socks.count; i++)
-  {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
-      return handle_errors(socks);
-  }
-
-  return handle_returns(socks, responses);
-}
-
-static int lux_utimens(const char *path, const struct timespec tv[2])
-{
-  int ret_stat = increment_pending_number();
-  if (ret_stat)
-    return -EBUSY;
-  server_sockets socks = get_live_sockets(_this_storage.servers);
-
-  struct raid_one_input input = generate_server_input(UTIMENS, path, NULL, 0, 0, 0, 0, tv, 0);
-
-  struct raid_one_response responses[2];
-
-  printf("attemting (utimens) contact with server for path %s for bytes.\n", path);
-  fflush(stdout);
-  for (int i = 0; i < socks.count; i++)
-  {
-    if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
-      return handle_errors(socks);
-  }
-
-  return handle_returns(socks, responses);
-}
-
-static int lux_release(const char *path, struct fuse_file_info *fi)
-{
   return 0;
 }
 
-static struct fuse_operations hello_oper = {
-    .getattr = lux_getattr,
-    .readdir = lux_readdir,
-    .open = lux_open,
-    .read = lux_read,
-    .access = lux_access,
-    .write = lux_write,
-    .truncate = lux_truncate,
-    .rename = lux_rename,
-    .release = lux_release,
-    .unlink = lux_unlink,
-    .rmdir = lux_rmdir,
-    .mknod = lux_mknod,
-    .utimens = lux_utimens,
-    .mkdir = lux_mkdir,
-};
-
-int run_storage_raid_one(struct storage_info *storage_info)
-{
-  _this_storage = *storage_info;
-  for (int i = 0; i < 2; i++)
+  static int lux_open(const char *path, struct fuse_file_info *fi)
   {
-    monitor_server(i);
+    int ret_stat = increment_pending_number();
+    if (ret_stat)
+      return -EBUSY;
+    server_sockets socks = get_live_sockets(_this_storage.servers);
+
+    struct raid_one_input input = generate_server_input(OPEN, path, NULL, 0, 0, 0, 0, NULL, 0);
+
+    struct raid_one_response responses[2];
+
+    printf("attemting (open) contact with server for path %s\n", path);
+    fflush(stdout);
+    for (int i = 0; i < socks.count; i++)
+    {
+      if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
+        return handle_errors(socks);
+    }
+
+    int hash_check_one = memcmp(responses[0].checked_hash, responses[0].recorded_hash, 16 * sizeof(unsigned char));
+    int hash_check_two = memcmp(responses[1].checked_hash, responses[1].recorded_hash, 16 * sizeof(unsigned char));
+    if (hash_check_one != 0 && hash_check_two == 0) {
+      copy_file(_this_storage.servers[1], _this_storage.servers[0], path);
+    } else if (hash_check_one == 0 && hash_check_two != 0) {
+      copy_file(_this_storage.servers[0], _this_storage.servers[1], path);
+    }
+
+    return handle_returns(socks, responses);
   }
-  sem_init(&replication_defender, 0, 1);
-  pending_requests = 0;
-  copier_demands_freedom = 0;
-  char **args = malloc(3 * sizeof(char *));
-  args[0] = strdup("useless");
-  args[1] = _this_storage.mountpoint;
-  args[2] = strdup("-f");
-  //args[3] = strdup("-s"); // not needed in vagrant
-  args[3] = NULL;
-  return fuse_main(3, args, &hello_oper, NULL);
-}
+
+  static int lux_read(const char *path, char *buf, size_t size, off_t offset,
+                      struct fuse_file_info *fi)
+  {
+    (void)fi;
+
+    int sock_fd = get_live_server_fd();
+
+    struct raid_one_input input = generate_server_input(READ, path, NULL, offset, size, 0, 0, NULL, 0);
+
+    printf("attemting (read) contact with server for path %s for %zu bytes.\n", path, size);
+    fflush(stdout);
+
+    if (send(sock_fd, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd, buf, size, 0) < 0)
+    {
+      return handle_error(sock_fd);
+    }
+
+    close(sock_fd);
+    return size;
+  }
+
+  static int lux_write(const char *path, const char *buf, size_t size, off_t offset,
+                       struct fuse_file_info *fi)
+  {
+    int ret_stat = increment_pending_number();
+    if (ret_stat)
+      return -EBUSY;
+    (void)fi;
+
+    server_sockets socks = get_live_sockets(_this_storage.servers);
+
+    struct raid_one_input input = generate_server_input(WRITE, path, NULL, offset, size, 0, 0, NULL, 0);
+
+    struct raid_one_response responses[2];
+
+    printf("attemting (write) contact with server for path %s for %zu bytes.\n", path, size);
+    fflush(stdout);
+    for (int i = 0; i < socks.count; i++)
+    {
+      if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0 || send(socks.sock_fd[i], buf, input.size, 0) < 0)
+        return handle_errors(socks);
+    }
+    int error = handle_returns(socks, responses);
+    return error == 0 ? size : error;
+  }
+
+  static int lux_access(const char *path, int flags)
+  {
+    struct raid_one_input input = generate_server_input(ACCESS, path, NULL, 0, 0, 0, 0, NULL, flags);
+
+    int sock_fd = get_live_server_fd();
+
+    printf("attemting (access) contact with server for path %s\n", path);
+    fflush(stdout);
+
+    struct raid_one_response response;
+
+    if (send(sock_fd, &input, sizeof(struct raid_one_input), 0) < 0 || recv(sock_fd, &response, sizeof(struct raid_one_response), 0) < 0)
+    {
+      return handle_error(sock_fd);
+    }
+
+    return handle_return(sock_fd, response.error);
+  }
+
+  static int lux_truncate(const char *path, off_t size)
+  {
+    int ret_stat = increment_pending_number();
+    if (ret_stat)
+      return -EBUSY;
+    server_sockets socks = get_live_sockets(_this_storage.servers);
+
+    struct raid_one_input input = generate_server_input(TRUNCATE, path, NULL, size, 0, 0, 0, NULL, 0);
+
+    struct raid_one_response responses[2];
+
+    printf("attemting (truncate) contact with server for path %s for %zu bytes.\n", path, size);
+    fflush(stdout);
+    for (int i = 0; i < socks.count; i++)
+    {
+      if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
+        return handle_errors(socks);
+    }
+
+    return handle_returns(socks, responses);
+  }
+
+  static int lux_rename(const char *old, const char *new)
+  {
+    int ret_stat = increment_pending_number();
+    if (ret_stat)
+      return -EBUSY;
+    server_sockets socks = get_live_sockets(_this_storage.servers);
+
+    struct raid_one_input input = generate_server_input(RENAME, old, new, 0, 0, 0, 0, NULL, 0);
+
+    struct raid_one_response responses[2];
+
+    printf("attemting (rename) contact with server for path %s for bytes.\n", old);
+    fflush(stdout);
+    for (int i = 0; i < socks.count; i++)
+    {
+      if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
+        return handle_errors(socks);
+    }
+
+    return handle_returns(socks, responses);
+  }
+
+  static int lux_unlink(const char *path)
+  {
+    int ret_stat = increment_pending_number();
+    if (ret_stat)
+      return -EBUSY;
+    server_sockets socks = get_live_sockets(_this_storage.servers);
+
+    struct raid_one_input input = generate_server_input(UNLINK, path, NULL, 0, 0, 0, 0, NULL, 0);
+
+    struct raid_one_response responses[2];
+
+    printf("attemting (unlink) contact with server for path %s for bytes.\n", path);
+    fflush(stdout);
+    for (int i = 0; i < socks.count; i++)
+    {
+      if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
+        return handle_errors(socks);
+    }
+
+    return handle_returns(socks, responses);
+  }
+
+  static int lux_rmdir(const char *path)
+  {
+    int ret_stat = increment_pending_number();
+    if (ret_stat)
+      return -EBUSY;
+    server_sockets socks = get_live_sockets(_this_storage.servers);
+
+    struct raid_one_input input = generate_server_input(RMDIR, path, NULL, 0, 0, 0, 0, NULL, 0);
+
+    struct raid_one_response responses[2];
+
+    printf("attemting (rmdir) contact with server for path %s for bytes.\n", path);
+    fflush(stdout);
+    for (int i = 0; i < socks.count; i++)
+    {
+      if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
+        return handle_errors(socks);
+    }
+
+    return handle_returns(socks, responses);
+  }
+
+  static int lux_mknod(const char *path, mode_t mode, dev_t dev)
+  {
+    int ret_stat = increment_pending_number();
+    if (ret_stat)
+      return -EBUSY;
+    server_sockets socks = get_live_sockets(_this_storage.servers);
+
+    struct raid_one_input input = generate_server_input(CREATE, path, NULL, 0, 0, mode, dev, NULL, 0);
+
+    struct raid_one_response responses[2];
+
+    printf("attemting (mknod) contact with server for path %s for bytes.\n", path);
+    fflush(stdout);
+    for (int i = 0; i < socks.count; i++)
+    {
+      if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
+        return handle_errors(socks);
+    }
+
+    return handle_returns(socks, responses);
+  }
+
+  static int lux_mkdir(const char *path, mode_t mode)
+  {
+    int ret_stat = increment_pending_number();
+    if (ret_stat)
+      return -EBUSY;
+    server_sockets socks = get_live_sockets(_this_storage.servers);
+
+    struct raid_one_input input = generate_server_input(MKDIR, path, NULL, 0, 0, mode, 0, NULL, 0);
+
+    struct raid_one_response responses[2];
+
+    printf("attemting (mkdir) contact with server for path %s for bytes.\n", path);
+    fflush(stdout);
+    for (int i = 0; i < socks.count; i++)
+    {
+      if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
+        return handle_errors(socks);
+    }
+
+    return handle_returns(socks, responses);
+  }
+
+  static int lux_utimens(const char *path, const struct timespec tv[2])
+  {
+    int ret_stat = increment_pending_number();
+    if (ret_stat)
+      return -EBUSY;
+    server_sockets socks = get_live_sockets(_this_storage.servers);
+
+    struct raid_one_input input = generate_server_input(UTIMENS, path, NULL, 0, 0, 0, 0, tv, 0);
+
+    struct raid_one_response responses[2];
+
+    printf("attemting (utimens) contact with server for path %s for bytes.\n", path);
+    fflush(stdout);
+    for (int i = 0; i < socks.count; i++)
+    {
+      if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
+        return handle_errors(socks);
+    }
+
+    return handle_returns(socks, responses);
+  }
+
+  static int lux_release(const char *path, struct fuse_file_info *fi)
+  {
+    return 0;
+  }
+
+  static struct fuse_operations hello_oper = {
+      .getattr = lux_getattr,
+      .readdir = lux_readdir,
+      .open = lux_open,
+      .read = lux_read,
+      .access = lux_access,
+      .write = lux_write,
+      .truncate = lux_truncate,
+      .rename = lux_rename,
+      .release = lux_release,
+      .unlink = lux_unlink,
+      .rmdir = lux_rmdir,
+      .mknod = lux_mknod,
+      .utimens = lux_utimens,
+      .mkdir = lux_mkdir,
+  };
+
+  int run_storage_raid_one(struct storage_info * storage_info)
+  {
+    _this_storage = *storage_info;
+    for (int i = 0; i < 2; i++)
+    {
+      monitor_server(i);
+    }
+    sem_init(&replication_defender, 0, 1);
+    pending_requests = 0;
+    copier_demands_freedom = 0;
+    char **args = malloc(3 * sizeof(char *));
+    args[0] = strdup("useless");
+    args[1] = _this_storage.mountpoint;
+    args[2] = strdup("-f");
+    //args[3] = strdup("-s"); // not needed in vagrant
+    args[3] = NULL;
+    return fuse_main(3, args, &hello_oper, NULL);
+  }
