@@ -48,14 +48,14 @@ struct raid_one_input generate_server_input(
   return result;
 }
 
-int handle_error(int sock_fd, const char* path, int command)
+int handle_error(int sock_fd, const char *path, int command)
 {
   close(sock_fd);
   log_server_return(path, &_this_storage, command, errno);
   return -errno;
 }
 
-int handle_return(int sock_fd, int error, const char* path, int command)
+int handle_return(int sock_fd, int error, const char *path, int command)
 {
   close(sock_fd);
   log_server_return(path, &_this_storage, command, error);
@@ -263,7 +263,7 @@ void *monitor_routine(void *args)
   int server_index = *(int *)args;
   struct lux_server *this_server = _this_storage.servers[server_index];
   while (1)
-  {    
+  {
     sleep(1);
     int sock_fd = get_server_fd(this_server);
     if (this_server->status == STATUS_ALIVE)
@@ -273,12 +273,14 @@ void *monitor_routine(void *args)
         this_server->status = STATUS_DEGRADED;
         this_server->fail_time = time(NULL);
         printf("connection failed with server: %s:%d.\n", this_server->server_ip, this_server->port);
+        log_serv_info(CONN_FAIL, &_this_storage, this_server, 0);
       }
       else
       {
         struct raid_one_input input = generate_server_input(DUMMY, NULL, NULL, 0, 0, 0, 0, NULL, 0);
         send(sock_fd, &input, sizeof(struct raid_one_input), 0);
         close(sock_fd);
+        log_serv_info(CONN_SUCCESS, &_this_storage, this_server, 0);
       }
     }
     else if (this_server->status == STATUS_DEGRADED)
@@ -287,14 +289,15 @@ void *monitor_routine(void *args)
       if (sock_fd == -1)
       {
         printf("coudln't connect with server: %s:%d for %d seconds\n", this_server->server_ip, this_server->port, time_since_fail);
+        log_serv_info(CONN_CONT_FAIL, &_this_storage, this_server, time_since_fail);
         if (time_since_fail >= _lux_client_info.timeout)
         {
-          printf("replicating data to hotswap.\n");
+          log_serv_info(CONN_COPYING, &_this_storage, this_server, 0);
           copy_server_contents(_this_storage.servers[(server_index + 1) % 2], _this_storage.hotswap);
-          printf("replication complete\n");
+          log_serv_info(CONN_COPYING_COMPLETE, &_this_storage, this_server, 0);
           _this_storage.servers[server_index] = _this_storage.hotswap;
           this_server = _this_storage.servers[server_index];
-          printf("replaced dead server with hotswap server: %s:%d.\n", this_server->server_ip, this_server->port);
+          log_serv_info(CONN_REPLACED, &_this_storage, this_server, 0);
         }
       }
       else
@@ -303,10 +306,13 @@ void *monitor_routine(void *args)
         send(sock_fd, &input, sizeof(struct raid_one_input), 0);
         close(sock_fd);
         printf("connection restored with server: %s:%d after %d seconds\n", this_server->server_ip, this_server->port, time_since_fail);
+        log_serv_info(CONN_RESTORED, &_this_storage, this_server, time_since_fail);
         printf("replicating data to reconnected server.\n");
+        log_serv_info(CONN_RESTORING, &_this_storage, this_server, 0);
         copy_server_contents(_this_storage.servers[(server_index + 1) % 2], this_server);
         this_server->status = STATUS_ALIVE;
         printf("replication complete\n");
+        log_serv_info(CONN_RESTORING_COMPLETE, &_this_storage, this_server, 0);
       }
     }
   }
