@@ -18,6 +18,7 @@ int pending_requests;
 #include "lux_client.h"
 #include "lux_fuse.h"
 #include "lux_common.h"
+#include "busy_path_control.c"
 
 struct raid_one_input generate_server_input(
     int command,
@@ -58,9 +59,11 @@ int handle_return(int sock_fd, int error)
   return -error;
 }
 
-int handle_errors(struct raid_one_live_sockets socks)
+int handle_errors(struct raid_one_live_sockets socks, const char* path)
 {
   sem_wait(&replication_defender);
+  uint32_t hash = jenkins_one_at_a_time_hash(path);
+  remove_hash(hash);
   pending_requests--;
   sem_post(&replication_defender);
   for (int i = 0; i < socks.count; i++)
@@ -70,9 +73,11 @@ int handle_errors(struct raid_one_live_sockets socks)
   return -errno;
 }
 
-int handle_returns(struct raid_one_live_sockets socks, struct raid_one_response responses[2])
+int handle_returns(struct raid_one_live_sockets socks, struct raid_one_response responses[2], const char* path)
 {
   sem_wait(&replication_defender);
+  uint32_t hash = jenkins_one_at_a_time_hash(path);
+  remove_hash(hash);
   pending_requests--;
   sem_post(&replication_defender);
   int res = 0;
@@ -205,20 +210,26 @@ int copy_routine(char *p, struct lux_server *from, struct lux_server *to)
   return 0;
 }
 
-int increment_pending_number()
+int increment_pending_number(const char* path)
 {
+  int res = 0;
   sem_wait(&replication_defender);
   if (copier_demands_freedom)
   {
     sem_post(&replication_defender);
-    return 1;
+    res = -1;
   }
   else
   {
-    sem_post(&replication_defender);
     pending_requests++;
-    return 0;
+    uint32_t hash = jenkins_one_at_a_time_hash(path);
+    if (add_hash(hash) == -1) {
+      pending_requests--;
+      res = -1;
+    }
+    sem_post(&replication_defender);
   }
+  return res;
 }
 
 int copy_server_contents(struct lux_server *from, struct lux_server *to)
@@ -226,8 +237,13 @@ int copy_server_contents(struct lux_server *from, struct lux_server *to)
   sem_wait(&replication_defender);
   copier_demands_freedom = 1;
   sem_post(&replication_defender);
-  while (pending_requests > 0)
+  int p;
+  while (1)
   {
+    sem_wait(&replication_defender);
+    p = pending_requests;
+    sem_post(&replication_defender);
+    if (p <= 0) break;
     continue;
   }
   copy_routine("", from, to);
@@ -351,7 +367,7 @@ struct raid_one_live_sockets get_live_sockets(struct lux_server *servers[2])
   }
   return result;
 }
-
+/*
 int lux_init_server(int i)
 {
   server_sockets socks = get_live_sockets(_this_storage.servers);
@@ -363,13 +379,13 @@ int lux_init_server(int i)
   fflush(stdout);
 
   if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || send(socks.sock_fd[i], &_this_storage, sizeof(struct storage_info), 0) < 0)
-    return handle_errors(socks);
+    return handle_errors(socks, "bl");
 
   printf("connected to server: %s:%d.\n", _this_storage.servers[i]->server_ip, _this_storage.servers[i]->port);
   close(socks.sock_fd[0]);
   close(socks.sock_fd[1]);
   return 0;
-}
+}*/
 
 static int lux_getattr(const char *path, struct stat *stbuf)
 {
@@ -512,7 +528,7 @@ int copy_file(struct lux_server *from, struct lux_server *to, const char path[25
 
   static int lux_open(const char *path, struct fuse_file_info *fi)
   {
-    int ret_stat = increment_pending_number();
+    int ret_stat = increment_pending_number(path);
     if (ret_stat)
       return -EBUSY;
     server_sockets socks = get_live_sockets(_this_storage.servers);
@@ -526,18 +542,18 @@ int copy_file(struct lux_server *from, struct lux_server *to, const char path[25
     for (int i = 0; i < socks.count; i++)
     {
       if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
-        return handle_errors(socks);
+        return handle_errors(socks, path);
     }
 
     int hash_check_one = memcmp(responses[0].checked_hash, responses[0].recorded_hash, 16 * sizeof(unsigned char));
     int hash_check_two = memcmp(responses[1].checked_hash, responses[1].recorded_hash, 16 * sizeof(unsigned char));
-    if (hash_check_one != 0 && hash_check_two == 0) {
+    if ((responses[0].error != 0 || hash_check_one != 0) && hash_check_two == 0) {
       copy_file(_this_storage.servers[1], _this_storage.servers[0], path);
-    } else if (hash_check_one == 0 && hash_check_two != 0) {
+    } else if ((responses[1].error != 0 || hash_check_one == 0) && hash_check_two != 0) {
       copy_file(_this_storage.servers[0], _this_storage.servers[1], path);
     }
 
-    return handle_returns(socks, responses);
+    return handle_returns(socks, responses, path);
   }
 
   static int lux_read(const char *path, char *buf, size_t size, off_t offset,
@@ -564,7 +580,7 @@ int copy_file(struct lux_server *from, struct lux_server *to, const char path[25
   static int lux_write(const char *path, const char *buf, size_t size, off_t offset,
                        struct fuse_file_info *fi)
   {
-    int ret_stat = increment_pending_number();
+    int ret_stat = increment_pending_number(path);
     if (ret_stat)
       return -EBUSY;
     (void)fi;
@@ -580,9 +596,9 @@ int copy_file(struct lux_server *from, struct lux_server *to, const char path[25
     for (int i = 0; i < socks.count; i++)
     {
       if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0 || send(socks.sock_fd[i], buf, input.size, 0) < 0)
-        return handle_errors(socks);
+        return handle_errors(socks, path);
     }
-    int error = handle_returns(socks, responses);
+    int error = handle_returns(socks, responses, path);
     return error == 0 ? size : error;
   }
 
@@ -607,7 +623,7 @@ int copy_file(struct lux_server *from, struct lux_server *to, const char path[25
 
   static int lux_truncate(const char *path, off_t size)
   {
-    int ret_stat = increment_pending_number();
+    int ret_stat = increment_pending_number(path);
     if (ret_stat)
       return -EBUSY;
     server_sockets socks = get_live_sockets(_this_storage.servers);
@@ -621,15 +637,15 @@ int copy_file(struct lux_server *from, struct lux_server *to, const char path[25
     for (int i = 0; i < socks.count; i++)
     {
       if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
-        return handle_errors(socks);
+        return handle_errors(socks, path);
     }
 
-    return handle_returns(socks, responses);
+    return handle_returns(socks, responses, path);
   }
 
   static int lux_rename(const char *old, const char *new)
   {
-    int ret_stat = increment_pending_number();
+    int ret_stat = increment_pending_number(old);
     if (ret_stat)
       return -EBUSY;
     server_sockets socks = get_live_sockets(_this_storage.servers);
@@ -643,15 +659,15 @@ int copy_file(struct lux_server *from, struct lux_server *to, const char path[25
     for (int i = 0; i < socks.count; i++)
     {
       if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
-        return handle_errors(socks);
+        return handle_errors(socks, old);
     }
 
-    return handle_returns(socks, responses);
+    return handle_returns(socks, responses, old);
   }
 
   static int lux_unlink(const char *path)
   {
-    int ret_stat = increment_pending_number();
+    int ret_stat = increment_pending_number(path);
     if (ret_stat)
       return -EBUSY;
     server_sockets socks = get_live_sockets(_this_storage.servers);
@@ -665,15 +681,15 @@ int copy_file(struct lux_server *from, struct lux_server *to, const char path[25
     for (int i = 0; i < socks.count; i++)
     {
       if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
-        return handle_errors(socks);
+        return handle_errors(socks, path);
     }
 
-    return handle_returns(socks, responses);
+    return handle_returns(socks, responses, path);
   }
 
   static int lux_rmdir(const char *path)
   {
-    int ret_stat = increment_pending_number();
+    int ret_stat = increment_pending_number(path);
     if (ret_stat)
       return -EBUSY;
     server_sockets socks = get_live_sockets(_this_storage.servers);
@@ -687,15 +703,15 @@ int copy_file(struct lux_server *from, struct lux_server *to, const char path[25
     for (int i = 0; i < socks.count; i++)
     {
       if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
-        return handle_errors(socks);
+        return handle_errors(socks, path);
     }
 
-    return handle_returns(socks, responses);
+    return handle_returns(socks, responses, path);
   }
 
   static int lux_mknod(const char *path, mode_t mode, dev_t dev)
   {
-    int ret_stat = increment_pending_number();
+    int ret_stat = increment_pending_number(path);
     if (ret_stat)
       return -EBUSY;
     server_sockets socks = get_live_sockets(_this_storage.servers);
@@ -709,15 +725,15 @@ int copy_file(struct lux_server *from, struct lux_server *to, const char path[25
     for (int i = 0; i < socks.count; i++)
     {
       if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
-        return handle_errors(socks);
+        return handle_errors(socks, path);
     }
 
-    return handle_returns(socks, responses);
+    return handle_returns(socks, responses, path);
   }
 
   static int lux_mkdir(const char *path, mode_t mode)
   {
-    int ret_stat = increment_pending_number();
+    int ret_stat = increment_pending_number(path);
     if (ret_stat)
       return -EBUSY;
     server_sockets socks = get_live_sockets(_this_storage.servers);
@@ -731,15 +747,15 @@ int copy_file(struct lux_server *from, struct lux_server *to, const char path[25
     for (int i = 0; i < socks.count; i++)
     {
       if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
-        return handle_errors(socks);
+        return handle_errors(socks, path);
     }
 
-    return handle_returns(socks, responses);
+    return handle_returns(socks, responses, path);
   }
 
   static int lux_utimens(const char *path, const struct timespec tv[2])
   {
-    int ret_stat = increment_pending_number();
+    int ret_stat = increment_pending_number(path);
     if (ret_stat)
       return -EBUSY;
     server_sockets socks = get_live_sockets(_this_storage.servers);
@@ -753,10 +769,10 @@ int copy_file(struct lux_server *from, struct lux_server *to, const char path[25
     for (int i = 0; i < socks.count; i++)
     {
       if (send(socks.sock_fd[i], &input, sizeof(struct raid_one_input), 0) < 0 || recv(socks.sock_fd[i], &responses[i], sizeof(struct raid_one_response), 0) < 0)
-        return handle_errors(socks);
+        return handle_errors(socks, path);
     }
 
-    return handle_returns(socks, responses);
+    return handle_returns(socks, responses, path);
   }
 
   static int lux_release(const char *path, struct fuse_file_info *fi)

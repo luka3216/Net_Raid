@@ -20,7 +20,7 @@
 char _path_to_storage[256];
 
 int handle_init(struct raid_one_input input, int client_socket)
-{ 
+{
   printf("handling init.\n");
 
   fflush(stdout);
@@ -31,9 +31,8 @@ int handle_init(struct raid_one_input input, int client_socket)
   printf("managing storage: %s. raid: %d \n", _this_storage->storage_name, _this_storage->raid);
 }
 
-
 int handle_getattr(struct raid_one_input input, int client_socket)
-{ 
+{
   char path[256];
   sprintf(path, "%s%s", _path_to_storage, input.path);
   printf("handling getattr at: %s\n", path);
@@ -42,7 +41,8 @@ int handle_getattr(struct raid_one_input input, int client_socket)
 
   struct raid_one_response response;
   response.error = 0;
-  if (stat(path, &response.one_stat) != 0) {
+  if (stat(path, &response.one_stat) != 0)
+  {
     response.error = errno;
   }
 
@@ -82,7 +82,9 @@ int handle_readdir(struct raid_one_input input, int client_socket)
     }
     closedir(d);
     response.size = i;
-  } else {
+  }
+  else
+  {
     response.size = 0;
     response.error = errno;
   }
@@ -102,7 +104,8 @@ int handle_open(struct raid_one_input input, int client_socket)
 
   struct raid_one_response response;
   response.error = 0;
-  if (open(path, 0) == -1) {
+  if (open(path, 0) == -1)
+  {
     response.error = errno;
   }
 
@@ -127,7 +130,8 @@ int handle_access(struct raid_one_input input, int client_socket)
 
   struct raid_one_response response;
   response.error = 0;
-  if (access(path, input.flags) != 0) {
+  if (access(path, input.flags) != 0)
+  {
     response.error = errno;
   }
 
@@ -149,7 +153,7 @@ int handle_read(struct raid_one_input input, int client_socket)
   printf("sending read response.\n");
 
   sendfile(client_socket, fd, &input.offset, input.size);
-  
+
   close(fd);
 }
 
@@ -168,21 +172,21 @@ int handle_write(struct raid_one_input input, int client_socket)
 
   struct raid_one_response response;
   response.error = 0;
-  if (fd == -1 || lsres == -1) {
+  if (fd == -1 || lsres == -1)
+  {
     response.error = errno;
   }
   send(client_socket, &response, sizeof(struct raid_one_response), 0);
 
   recv(client_socket, buff, input.size, 0);
-  
+
   write(fd, buff, input.size);
-  
+
   close(fd);
 
   MD5_CTX mdContext = MDFile(path);
 
   setxattr(path, "user.hash", mdContext.digest, 16 * sizeof(unsigned char), 0);
-
 }
 
 int handle_truncate(struct raid_one_input input, int client_socket)
@@ -195,15 +199,15 @@ int handle_truncate(struct raid_one_input input, int client_socket)
 
   struct raid_one_response response;
   response.error = 0;
-  if (truncate(path, input.offset) != 0) {
-  //  response.error = errno;
+  if (truncate(path, input.offset) != 0)
+  {
+    //  response.error = errno;
   }
 
   printf("sending truncate response.\n");
 
   send(client_socket, &response, sizeof(struct raid_one_response), 0);
 }
-
 
 int handle_rename(struct raid_one_input input, int client_socket)
 {
@@ -217,7 +221,8 @@ int handle_rename(struct raid_one_input input, int client_socket)
 
   struct raid_one_response response;
   response.error = 0;
-  if (rename(path, path2) != 0) {
+  if (rename(path, path2) != 0)
+  {
     response.error = errno;
   }
 
@@ -236,7 +241,8 @@ int handle_unlink(struct raid_one_input input, int client_socket)
 
   struct raid_one_response response;
   response.error = 0;
-  if (unlink(path) != 0) {
+  if (unlink(path) != 0)
+  {
     response.error = errno;
   }
 
@@ -255,7 +261,8 @@ int handle_rmdir(struct raid_one_input input, int client_socket)
 
   struct raid_one_response response;
   response.error = 0;
-  if (rmdir(path) != 0) {
+  if (rmdir(path) != 0)
+  {
     response.error = errno;
   }
 
@@ -274,7 +281,8 @@ int handle_mknod(struct raid_one_input input, int client_socket)
 
   struct raid_one_response response;
   response.error = 0;
-  if (mknod(path, input.mode, input.dev) != 0) {
+  if (mknod(path, input.mode, input.dev) != 0)
+  {
     response.error = errno;
   }
 
@@ -293,7 +301,8 @@ int handle_mkdir(struct raid_one_input input, int client_socket)
 
   struct raid_one_response response;
   response.error = 0;
-  if (mkdir(path, input.mode) != 0) {
+  if (mkdir(path, input.mode) != 0)
+  {
     response.error = errno;
   }
 
@@ -302,7 +311,8 @@ int handle_mkdir(struct raid_one_input input, int client_socket)
   send(client_socket, &response, sizeof(struct raid_one_response), 0);
 }
 
-int handle_utimens(struct raid_one_input input, int client_socket) {
+int handle_utimens(struct raid_one_input input, int client_socket)
+{
   char path[256];
   sprintf(path, "%s%s", _path_to_storage, input.path);
   printf("handling utimens at: %s\n", path);
@@ -311,13 +321,14 @@ int handle_utimens(struct raid_one_input input, int client_socket) {
 
   struct raid_one_response response;
   response.error = 0;
-  if (utimensat(AT_FDCWD, path, input.spec, 0) != 0) {
+  if (utimensat(AT_FDCWD, path, input.spec, 0) != 0)
+  {
     response.error = errno;
   }
 
   printf("sending utimens response.\n");
 
-  send(client_socket, &response, sizeof(struct raid_one_response), 0); 
+  send(client_socket, &response, sizeof(struct raid_one_response), 0);
 }
 
 int handle_input(struct raid_one_input input, int client_socket)
@@ -377,9 +388,15 @@ int manage_server_raid_one(int server_socket, char *path_to_storage)
   {
     struct raid_one_input input;
     int client_socket = accept(server_socket, NULL, NULL);
-    int size = recv(client_socket, &input, sizeof(struct raid_one_input), 0);
-    handle_input(input, client_socket);
+    int pid = fork();
+    if (pid == 0)
+    {
+      recv(client_socket, &input, sizeof(struct raid_one_input), 0);
+      handle_input(input, client_socket);
+    }
     close(client_socket);
+    if (pid == 0) 
+      break;
   }
   return 0;
 }

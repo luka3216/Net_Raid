@@ -461,8 +461,8 @@ char *filename;
   while ((bytes = fread (data, 1, 1024, inFile)) != 0)
     MD5Update (&mdContext, data, bytes);
   MD5Final (&mdContext);
-  MDPrint (&mdContext);
-  printf (" %s\n", filename);
+ // MDPrint (&mdContext);
+ // printf (" %s\n", filename);
   fclose (inFile);
   return mdContext;
 }
