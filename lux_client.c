@@ -12,6 +12,7 @@
 
 #include "lux_client.h"
 #include "lux_fuse.c"
+#include "logger.h"
 
 void config_servers(struct storage_info *storage)
 {
@@ -24,13 +25,12 @@ void config_servers(struct storage_info *storage)
     server_adress.sin_addr.s_addr = inet_addr(storage->servers[i]->server_ip);
     storage->servers[i]->server_adress = server_adress;
   }
-    struct sockaddr_in server_adress;
+  struct sockaddr_in server_adress;
 
-    server_adress.sin_family = AF_INET;
-    server_adress.sin_port = storage->hotswap->port;
-    server_adress.sin_addr.s_addr = inet_addr(storage->hotswap->server_ip);
-    storage->hotswap->server_adress = server_adress;
-
+  server_adress.sin_family = AF_INET;
+  server_adress.sin_port = storage->hotswap->port;
+  server_adress.sin_addr.s_addr = inet_addr(storage->hotswap->server_ip);
+  storage->hotswap->server_adress = server_adress;
 }
 
 void print_client_info()
@@ -158,6 +158,9 @@ int main(int argc, char **argv)
 
   parse_config_file(config_fd);
   printf("Config file parsed.\n");
+  logger_init(_lux_client_info.path_to_error_log);
+
+  log_general("Config file parse.");
 
   for (int i = 0; i < 1 /*_lux_client_info->server_count*/; i++)
   {

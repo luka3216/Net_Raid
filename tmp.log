@@ -1,0 +1,724 @@
+Servers initiated
+Servers initiated
+Servers initiated
+[Wed 2018-08-15 14:18:20 +04] Config file parse.
+[Wed 2018-08-15 14:29:40] Config file parse.
+[Wed 2018-08-15 16:00:32] Config file parse.
+[Wed 2018-08-15 16:03:16] Config file parse.
+[Wed 2018-08-15 16:03:16] STORAGE1 access called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /.xdg-volume-info
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /autorun.inf
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /.Trash
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /.Trash-1000
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:16] STORAGE1 getattr called for path /autorun.inf
+[Wed 2018-08-15 16:03:19] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:03:19] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:03:19] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:19] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:03:19] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:03:19] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:03:19] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:03:19] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:03:19] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:03:19] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:03:19] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:03:19] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:03:19] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:03:19] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:03:19] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:03:19] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:03:19] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:03:19] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:06:05] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:06:06] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:06:06] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:06:06] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:06:06] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:06:06] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:06:06] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:06:06] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:06:06] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:06:06] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:06:06] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:06:06] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:06:06] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:06:06] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:06:06] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:06:06] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:06:06] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:06:06] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:11:59] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:12:00] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:12:00] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:12:00] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:12:00] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:12:00] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:12:00] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:12:00] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:12:00] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:12:00] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:12:00] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:12:00] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:12:00] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:12:00] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:12:00] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:12:00] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:12:00] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:12:00] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:12:18] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:12:19] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:12:19] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:12:19] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:12:19] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:12:19] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:12:19] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:12:19] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:12:19] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:12:19] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:12:19] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:12:19] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:12:19] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:12:19] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:12:19] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:12:19] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:12:19] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:12:19] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:12:19] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:12:22] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:12:25] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:12:25] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:12:25] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:12:25] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:12:25] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:12:25] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:12:25] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:12:25] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:12:25] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:12:25] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:12:25] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:12:25] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:12:25] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:12:25] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:12:25] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:12:25] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:12:25] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:12:38] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:12:39] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:12:39] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:12:39] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:12:39] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:12:39] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:12:39] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:12:39] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:12:39] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:12:39] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:12:39] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:12:39] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:12:39] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:12:39] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:12:39] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:12:39] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:12:39] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:12:39] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:12:39] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:14:08] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:14:09] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:14:09] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:14:09] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:14:09] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:14:09] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:14:09] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:14:09] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:14:09] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:14:09] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:14:09] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:14:09] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:14:09] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:14:09] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:14:09] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:14:09] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:14:09] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:14:09] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:14:19] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:14:20] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:14:20] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:14:20] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:14:20] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:14:20] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:14:20] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:14:20] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:14:20] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:14:20] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:14:20] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:14:20] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:14:20] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:14:20] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:14:20] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:14:20] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:14:20] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:14:20] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:14:20] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:14:29] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:14:31] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:14:31] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:14:31] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:14:31] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:14:31] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:14:31] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:14:31] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:14:31] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:14:31] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:14:31] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:14:31] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:14:31] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:14:31] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:14:31] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:14:31] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:14:31] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:14:31] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:14:54] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:14:55] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:14:55] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:14:55] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:14:55] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:14:55] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:14:55] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:14:55] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:14:55] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:14:55] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:14:55] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:14:55] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:14:55] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:14:55] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:14:55] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:14:55] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:14:55] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:14:55] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:14:55] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:14:58] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:15:00] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:15:00] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:15:00] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:15:00] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:15:00] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:15:00] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:15:00] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:15:00] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:15:00] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:15:00] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:15:00] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:15:00] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:15:00] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:15:00] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:15:00] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:15:00] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:15:00] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:15:00] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:15:31] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:15:32] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:15:32] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:15:32] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:15:32] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:15:32] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:15:32] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:15:32] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:15:32] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:15:32] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:15:32] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:15:32] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:15:32] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:15:32] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:15:32] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:15:32] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:15:32] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:15:32] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:15:32] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:16:10] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:16:11] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:16:11] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:16:11] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:16:11] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:16:11] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:16:11] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:16:11] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:16:11] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:16:11] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:16:11] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:16:11] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:16:11] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:16:11] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:16:11] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:16:11] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:16:11] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:16:11] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:17:22] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:17:23] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:17:23] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:17:23] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:17:23] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:17:23] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:17:23] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:17:23] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:17:23] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:17:23] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:17:23] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:17:23] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:17:23] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:17:23] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:17:23] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:17:23] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:17:23] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:17:23] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:17:23] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:17:35] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:17:36] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:17:36] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:17:36] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:17:36] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:17:36] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:17:36] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:17:36] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:17:36] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:17:36] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:17:36] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:17:36] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:17:36] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:17:36] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:17:36] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:17:36] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:17:36] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:17:36] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:18:02] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:18:03] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:18:03] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:18:03] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:18:03] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:18:03] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:18:03] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:18:03] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:18:03] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:18:03] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:18:03] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:18:03] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:18:03] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:18:03] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:18:03] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:18:03] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:18:03] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:18:03] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:18:26] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:18:27] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:18:27] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:18:27] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:18:27] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:18:27] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:18:27] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:18:27] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:18:27] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:18:27] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:18:27] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:18:27] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:18:27] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:18:27] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:18:27] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:18:27] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:18:27] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:18:27] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:19:59] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:01] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:20:01] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:20:01] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:01] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:01] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:20:01] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:20:01] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:01] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:20:01] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:20:01] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:20:01] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:20:01] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:20:01] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:20:01] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:20:01] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:20:01] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:20:01] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:20:01] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:07] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:07] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:07] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:07] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:07] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:07] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:20:07] STORAGE1 getattr called for path /e.txt
+[Wed 2018-08-15 16:20:07] STORAGE1 getattr called for path /f.txt
+[Wed 2018-08-15 16:20:07] STORAGE1 getattr called for path /k.txt
+[Wed 2018-08-15 16:20:07] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:20:08] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:20:08] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:20:08] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:08] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:08] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:20:08] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:20:08] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:20:08] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:20:08] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:20:08] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:20:08] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:20:08] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:20:08] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:20:08] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:08] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:20:08] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:20:08] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:20:08] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] Config file parse.
+[Wed 2018-08-15 16:20:34] STORAGE1 access called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /.xdg-volume-info
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path /.xdg-volume-info returned with error: No such file or directory.
+[Wed 2018-08-15 16:20:34] STORAGE1 access call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /.Trash
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path /.Trash returned with error: No such file or directory.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /autorun.inf
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path /autorun.inf returned with error: No such file or directory.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /.Trash-1000
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path /.Trash-1000 returned with error: No such file or directory.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /autorun.inf
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path /autorun.inf returned with error: No such file or directory.
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:34] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:37] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:37] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:37] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:37] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:37] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:37] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:37] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:37] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:37] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:20:37] STORAGE1 getattr call for path /dirdir returned with success.
+[Wed 2018-08-15 16:20:37] STORAGE1 getattr called for path /e.txt
+[Wed 2018-08-15 16:20:37] STORAGE1 getattr call for path /e.txt returned with success.
+[Wed 2018-08-15 16:20:37] STORAGE1 getattr called for path /f.txt
+[Wed 2018-08-15 16:20:37] STORAGE1 getattr call for path /f.txt returned with success.
+[Wed 2018-08-15 16:20:37] STORAGE1 getattr called for path /k.txt
+[Wed 2018-08-15 16:20:37] STORAGE1 getattr call for path /k.txt returned with success.
+[Wed 2018-08-15 16:20:37] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:37] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:37] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:20:37] STORAGE1 readdir call for path /dirdir returned with success.
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:39] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:20:39] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr call for path /dirdir returned with success.
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:20:39] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:20:39] STORAGE1 readdir call for path /dirdir returned with success.
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr call for path /dirdir/c returned with success.
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr call for path /dirdir/b returned with success.
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr call for path /dirdir/durdur returned with success.
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:20:39] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:20:39] STORAGE1 readdir call for path /dirdir/durdur returned with success.
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:20:39] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:26:42] STORAGE1 getattr called for path /f.txt
+[Wed 2018-08-15 16:26:42] STORAGE1 getattr called for path /f.txt
+[Wed 2018-08-15 16:26:42] STORAGE1 getattr call for path /f.txt returned with success.
+[Wed 2018-08-15 16:26:42] STORAGE1 getattr call for path /f.txt returned with success.
+[Wed 2018-08-15 16:26:42] STORAGE1 open called for path /f.txt
+[Wed 2018-08-15 16:26:42] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:26:42] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:26:42] STORAGE1 read called for path /f.txt
+[Wed 2018-08-15 16:26:42] STORAGE1 getattr called for path /f.txt
+[Wed 2018-08-15 16:26:42] STORAGE1 getattr call for path /f.txt returned with success.
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:26:43] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:26:43] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr call for path /dirdir returned with success.
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:26:43] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:26:43] STORAGE1 readdir call for path /dirdir returned with success.
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr call for path /dirdir/c returned with success.
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr call for path /dirdir/b returned with success.
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr call for path /dirdir/durdur returned with success.
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:43] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:26:43] STORAGE1 readdir call for path /dirdir/durdur returned with success.
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:26:43] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:26:45] STORAGE1 getattr called for path /f.txt
+[Wed 2018-08-15 16:26:45] STORAGE1 getattr call for path /f.txt returned with success.
+[Wed 2018-08-15 16:26:45] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:26:45] STORAGE1 open called for path /f.txt
+[Wed 2018-08-15 16:26:45] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:26:45] STORAGE1 read called for path /f.txt
+[Wed 2018-08-15 16:26:45] STORAGE1 open called for path /f.txt
+[Wed 2018-08-15 16:26:45] STORAGE1 truncate called for path /f.txt
+[Wed 2018-08-15 16:26:45] STORAGE1 getattr called for path /f.txt
+[Wed 2018-08-15 16:26:45] STORAGE1 getattr call for path /f.txt returned with success.
+[Wed 2018-08-15 16:26:45] STORAGE1 write called for path /f.txt
+[Wed 2018-08-15 16:26:45] STORAGE1 getattr called for path /f.txt
+[Wed 2018-08-15 16:26:45] STORAGE1 getattr call for path /f.txt returned with success.
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:26:48] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:26:48] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr call for path /dirdir returned with success.
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:48] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:26:48] STORAGE1 readdir call for path /dirdir returned with success.
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr call for path /dirdir/c returned with success.
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr call for path /dirdir/b returned with success.
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr call for path /dirdir/durdur returned with success.
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:26:48] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:26:48] STORAGE1 readdir call for path /dirdir/durdur returned with success.
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:26:48] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:27:14] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:27:14] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr called for path /.git
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:27:15] STORAGE1 readdir called for path /
+[Wed 2018-08-15 16:27:15] STORAGE1 readdir call for path / returned with success.
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr called for path /.gitignore
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr called for path /dirdir
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr call for path /dirdir returned with success.
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr called for path /dirdir/.git
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr call for path / returned with success.
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:27:15] STORAGE1 readdir called for path /dirdir
+[Wed 2018-08-15 16:27:15] STORAGE1 readdir call for path /dirdir returned with success.
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr called for path /dirdir/c
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr call for path /dirdir/c returned with success.
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr called for path /dirdir/.gitignore
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr called for path /dirdir/b
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr call for path /dirdir/b returned with success.
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr called for path /dirdir/durdur
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr call for path /dirdir/durdur returned with success.
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Wed 2018-08-15 16:27:15] STORAGE1 readdir called for path /dirdir/durdur
+[Wed 2018-08-15 16:27:15] STORAGE1 readdir call for path /dirdir/durdur returned with success.
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr called for path /
+[Wed 2018-08-15 16:27:15] STORAGE1 getattr call for path / returned with success.
