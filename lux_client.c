@@ -162,7 +162,7 @@ int main(int argc, char **argv)
 
   log_general("Config file parse.");
 
-  for (int i = 0; i < 1 /*_lux_client_info->server_count*/; i++)
+  for (int i = 0; i < _lux_client_info.storage_count; i++)
   {
     if (fork() == 0)
     {

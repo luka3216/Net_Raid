@@ -18,6 +18,7 @@
 #define CONN_REPLACED 6
 #define CONN_RESTORING 7
 #define CONN_RESTORING_COMPLETE 8
+#define CONN_FAIL_FINAL 9
 
 #include "logger.c"
 

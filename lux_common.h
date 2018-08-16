@@ -57,16 +57,8 @@ struct raid_one_directories_response
 {
   char filenames[32][32];
   struct stat stats[32];
-  struct stat one_stat;
   int size;
   int error;
-};
-
-struct raid_one_file_response
-{
-  int status;
-  int size;
-  char buff[4088];
 };
 
 #endif // LUX_COMMON_H

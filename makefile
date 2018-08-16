@@ -1,4 +1,4 @@
-comp:
+compile:
 	gcc -std=gnu99 -Wall lux_client.c -D_FILE_OFFSET_BITS=64 `pkg-config fuse --cflags --libs` -o lux_client
 	gcc -std=gnu99 lux_server.c -o lux_server
 

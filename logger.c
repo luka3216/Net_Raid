@@ -155,6 +155,9 @@ void log_serv_info(int conn_stat, struct storage_info *storage, struct lux_serve
   }
   else if (conn_stat == CONN_FAIL)
     strcat(buff, "server status check failed.");
+  else if (conn_stat == CONN_FAIL_FINAL) {
+    strcat(buff, "server downtime exceeds timeout limit.");
+  }
   else if (conn_stat == CONN_RESTORED)
   {
     sprintf(buff2, "connection with server reestablished after %d seconds.", time_since_fail);

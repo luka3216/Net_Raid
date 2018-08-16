@@ -1,559 +1,996 @@
-[Wed 2018-08-15 22:33:08] Config file parse.
-[Wed 2018-08-15 22:33:08] STORAGE1 access called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 access call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /.Trash
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path /.Trash returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /.xdg-volume-info
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path /.xdg-volume-info returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /autorun.inf
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path /autorun.inf returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /.Trash-1000
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path /.Trash-1000 returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /autorun.inf
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path /autorun.inf returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:08] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:09] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:09] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:10] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:10] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:10] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:10] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:11] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:11] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:11] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:11] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr called for path /.gitignore
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr called for path /dirdir
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:11] STORAGE1 readdir called for path /dirdir
-[Wed 2018-08-15 22:33:11] STORAGE1 readdir call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr called for path /dirdir/c
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr call for path /dirdir/c returned with success.
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr called for path /dirdir/.gitignore
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr called for path /dirdir/b
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr call for path /dirdir/b returned with success.
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:11] STORAGE1 readdir called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:11] STORAGE1 readdir call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:11] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:12] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:12] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:13] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:13] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:13] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:13] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:14] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:14] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:15] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:15] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:15] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:15] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:16] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:16] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:16] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:16] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr called for path /.gitignore
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr called for path /dirdir
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:16] STORAGE1 readdir called for path /dirdir
-[Wed 2018-08-15 22:33:16] STORAGE1 readdir call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr called for path /dirdir/c
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr call for path /dirdir/c returned with success.
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr called for path /dirdir/.gitignore
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr called for path /dirdir/b
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr call for path /dirdir/b returned with success.
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:16] STORAGE1 readdir called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:16] STORAGE1 readdir call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:16] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:17] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:17] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:18] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:18] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:18] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:18] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:19] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:19] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:20] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:20] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:20] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:20] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:21] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:21] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:21] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:21] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr called for path /.gitignore
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr called for path /dirdir
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:21] STORAGE1 readdir called for path /dirdir
-[Wed 2018-08-15 22:33:21] STORAGE1 readdir call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr called for path /dirdir/c
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr call for path /dirdir/c returned with success.
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr called for path /dirdir/.gitignore
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr called for path /dirdir/b
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr call for path /dirdir/b returned with success.
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:21] STORAGE1 readdir called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:21] STORAGE1 readdir call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:21] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:22] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:22] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:23] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:23] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:23] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:23] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:24] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:24] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:25] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:25] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:25] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:25] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:26] STORAGE1 127.0.0.1:10001 server status check successful.
-[Wed 2018-08-15 22:33:26] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:26] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:26] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr called for path /.gitignore
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr called for path /dirdir
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:26] STORAGE1 readdir called for path /dirdir
-[Wed 2018-08-15 22:33:26] STORAGE1 readdir call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr called for path /dirdir/c
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr call for path /dirdir/c returned with success.
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr called for path /dirdir/.gitignore
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr called for path /dirdir/b
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr call for path /dirdir/b returned with success.
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:26] STORAGE1 readdir called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:26] STORAGE1 readdir call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:26] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:27] STORAGE1 127.0.0.1:10001 server fail time exceeded timeout.
-[Wed 2018-08-15 22:33:27] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:28] STORAGE1 127.0.0.1:10001 server status check failing for 1 seconds.
-[Wed 2018-08-15 22:33:28] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:28] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:28] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:29] STORAGE1 127.0.0.1:10001 server status check failing for 2 seconds.
-[Wed 2018-08-15 22:33:29] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:30] STORAGE1 127.0.0.1:10001 server status check failing for 3 seconds.
-[Wed 2018-08-15 22:33:30] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:30] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:30] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:31] STORAGE1 127.0.0.1:10001 server status check failing for 4 seconds.
-[Wed 2018-08-15 22:33:31] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:31] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:31] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr called for path /.gitignore
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr called for path /dirdir
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:31] STORAGE1 readdir called for path /dirdir
-[Wed 2018-08-15 22:33:31] STORAGE1 readdir call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr called for path /dirdir/c
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr call for path /dirdir/c returned with success.
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr called for path /dirdir/.gitignore
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr called for path /dirdir/b
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr call for path /dirdir/b returned with success.
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:31] STORAGE1 readdir called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:31] STORAGE1 readdir call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:31] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:32] STORAGE1 127.0.0.1:10001 server status check failing for 5 seconds.
-[Wed 2018-08-15 22:33:32] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:33] STORAGE1 127.0.0.1:10001 server status check failing for 6 seconds.
-[Wed 2018-08-15 22:33:33] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:33] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:33] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:34] STORAGE1 127.0.0.1:10001 server status check failing for 7 seconds.
-[Wed 2018-08-15 22:33:34] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:35] STORAGE1 127.0.0.1:10001 server status check failing for 8 seconds.
-[Wed 2018-08-15 22:33:35] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:35] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:35] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:36] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:36] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:36] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:36] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr called for path /.gitignore
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr called for path /dirdir
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:36] STORAGE1 readdir called for path /dirdir
-[Wed 2018-08-15 22:33:36] STORAGE1 readdir call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr called for path /dirdir/c
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr call for path /dirdir/c returned with success.
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr called for path /dirdir/.gitignore
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr called for path /dirdir/b
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr call for path /dirdir/b returned with success.
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:36] STORAGE1 readdir called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:36] STORAGE1 readdir call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:36] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:37] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:37] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:38] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:38] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:38] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:38] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:39] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:39] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:39] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:39] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:40] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:40] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:40] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:40] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:41] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:41] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:42] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:42] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:42] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:42] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr called for path /.gitignore
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr called for path /dirdir
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:42] STORAGE1 readdir called for path /dirdir
-[Wed 2018-08-15 22:33:42] STORAGE1 readdir call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr called for path /dirdir/c
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr call for path /dirdir/c returned with success.
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr called for path /dirdir/.gitignore
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr called for path /dirdir/b
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr call for path /dirdir/b returned with success.
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:42] STORAGE1 readdir called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:42] STORAGE1 readdir call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:42] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:43] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:43] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:44] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:44] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:44] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:44] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:45] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:45] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:45] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:45] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:46] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:46] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:47] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:47] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:47] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:47] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr called for path /.gitignore
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr called for path /dirdir
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:47] STORAGE1 readdir called for path /dirdir
-[Wed 2018-08-15 22:33:47] STORAGE1 readdir call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr called for path /dirdir/c
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr call for path /dirdir/c returned with success.
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr called for path /dirdir/.gitignore
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr called for path /dirdir/b
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr call for path /dirdir/b returned with success.
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:47] STORAGE1 readdir called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:47] STORAGE1 readdir call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:47] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:48] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:48] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:49] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:49] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:49] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:49] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:50] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:50] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:51] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:51] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:51] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:51] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:52] STORAGE1 127.0.0.1:10002 server status check successful.
-[Wed 2018-08-15 22:33:52] STORAGE1 127.0.0.1:11111 server status check successful.
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr called for path /.git
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:52] STORAGE1 readdir called for path /
-[Wed 2018-08-15 22:33:52] STORAGE1 readdir call for path / returned with success.
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr called for path /.gitignore
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr called for path /dirdir
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr call for path / returned with success.
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr called for path /dirdir/.git
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:52] STORAGE1 readdir called for path /dirdir
-[Wed 2018-08-15 22:33:52] STORAGE1 readdir call for path /dirdir returned with success.
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr called for path /dirdir/c
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr call for path /dirdir/c returned with success.
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr called for path /dirdir/.gitignore
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr called for path /dirdir/b
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr call for path /dirdir/b returned with success.
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr called for path /dirdir/durdur/.git
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
-[Wed 2018-08-15 22:33:52] STORAGE1 readdir called for path /dirdir/durdur
-[Wed 2018-08-15 22:33:52] STORAGE1 readdir call for path /dirdir/durdur returned with success.
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr called for path /
-[Wed 2018-08-15 22:33:52] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] Config file parse.
+[Thu 2018-08-16 13:08:31] STORAGE1 access called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 access call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /.Trash
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path /.Trash returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /.Trash-1000
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path /.Trash-1000 returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /.xdg-volume-info
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path /.xdg-volume-info returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /autorun.inf
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path /autorun.inf returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /autorun.inf
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path /autorun.inf returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:32] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:08:32] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:33] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:08:33] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:33] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:33] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr called for path /.gitignore
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr called for path /dirdir
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr call for path /dirdir returned with success.
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:33] STORAGE1 readdir called for path /dirdir
+[Thu 2018-08-16 13:08:33] STORAGE1 readdir call for path /dirdir returned with success.
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr called for path /dirdir/c
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr call for path /dirdir/c returned with success.
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr called for path /dirdir/.gitignore
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr called for path /dirdir/b
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr call for path /dirdir/b returned with success.
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr called for path /dirdir/durdur
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:08:33] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:33] STORAGE1 readdir called for path /dirdir/durdur
+[Thu 2018-08-16 13:08:33] STORAGE1 readdir call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:08:34] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:34] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:08:34] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:34] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:35] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:35] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:08:36] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:36] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:08:36] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:36] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:37] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:37] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:08:37] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:37] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:38] STORAGE1 127.0.0.1:10001 server status check failed.
+[Thu 2018-08-16 13:08:38] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:38] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:08:38] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:38] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:08:38] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:38] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:38] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:38] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:38] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr called for path /.gitignore
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr called for path /dirdir
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr call for path /dirdir returned with success.
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:39] STORAGE1 readdir called for path /dirdir
+[Thu 2018-08-16 13:08:39] STORAGE1 readdir call for path /dirdir returned with success.
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr called for path /dirdir/c
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr call for path /dirdir/c returned with success.
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr called for path /dirdir/.gitignore
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr called for path /dirdir/b
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr call for path /dirdir/b returned with success.
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr called for path /dirdir/durdur
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:39] STORAGE1 readdir called for path /dirdir/durdur
+[Thu 2018-08-16 13:08:39] STORAGE1 readdir call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:39] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:39] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:39] STORAGE1 127.0.0.1:10001 server status check failing for 1 seconds.
+[Thu 2018-08-16 13:08:40] STORAGE1 127.0.0.1:10001 server status check failing for 2 seconds.
+[Thu 2018-08-16 13:08:40] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:40] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:40] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:41] STORAGE1 127.0.0.1:10001 server status check failing for 3 seconds.
+[Thu 2018-08-16 13:08:41] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:42] STORAGE1 127.0.0.1:10001 server status check failing for 4 seconds.
+[Thu 2018-08-16 13:08:42] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:42] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:42] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:43] STORAGE1 127.0.0.1:10001 connection with server reestablished after 5 seconds.
+[Thu 2018-08-16 13:08:43] STORAGE1 127.0.0.1:10001 restoring data to server.
+[Thu 2018-08-16 13:08:43] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:43] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:43] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:43] STORAGE1 127.0.0.1:10001 restoration of data to server complete.
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr called for path /.gitignore
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr called for path /dirdir
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr call for path /dirdir returned with success.
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:44] STORAGE1 readdir called for path /dirdir
+[Thu 2018-08-16 13:08:44] STORAGE1 readdir call for path /dirdir returned with success.
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr called for path /dirdir/c
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr call for path /dirdir/c returned with success.
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr called for path /dirdir/.gitignore
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr called for path /dirdir/b
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr call for path /dirdir/b returned with success.
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr called for path /dirdir/durdur
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:44] STORAGE1 readdir called for path /dirdir/durdur
+[Thu 2018-08-16 13:08:44] STORAGE1 readdir call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:44] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:44] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:08:45] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:45] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:45] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:45] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:08:46] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:46] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:08:46] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:46] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:47] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:47] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:08:48] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:48] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:48] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:48] STORAGE1 127.0.0.1:10001 server status check failed.
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:49] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:49] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr called for path /.gitignore
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr called for path /dirdir
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr call for path /dirdir returned with success.
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:49] STORAGE1 readdir called for path /dirdir
+[Thu 2018-08-16 13:08:49] STORAGE1 readdir call for path /dirdir returned with success.
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr called for path /dirdir/c
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr call for path /dirdir/c returned with success.
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr called for path /dirdir/.gitignore
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr called for path /dirdir/b
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr call for path /dirdir/b returned with success.
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr called for path /dirdir/durdur
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:49] STORAGE1 readdir called for path /dirdir/durdur
+[Thu 2018-08-16 13:08:49] STORAGE1 readdir call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:49] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:49] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:49] STORAGE1 127.0.0.1:10001 server status check failing for 1 seconds.
+[Thu 2018-08-16 13:08:50] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:50] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:50] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:50] STORAGE1 127.0.0.1:10001 server status check failing for 2 seconds.
+[Thu 2018-08-16 13:08:51] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:51] STORAGE1 127.0.0.1:10001 server status check failing for 3 seconds.
+[Thu 2018-08-16 13:08:51] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:51] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:52] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:52] STORAGE1 127.0.0.1:10001 server status check failing for 4 seconds.
+[Thu 2018-08-16 13:08:53] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:53] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:53] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:53] STORAGE1 127.0.0.1:10001 server status check failing for 5 seconds.
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:54] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:54] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr called for path /.gitignore
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr called for path /dirdir
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr call for path /dirdir returned with success.
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:54] STORAGE1 readdir called for path /dirdir
+[Thu 2018-08-16 13:08:54] STORAGE1 readdir call for path /dirdir returned with success.
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr called for path /dirdir/c
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr call for path /dirdir/c returned with success.
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr called for path /dirdir/.gitignore
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr called for path /dirdir/b
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr call for path /dirdir/b returned with success.
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr called for path /dirdir/durdur
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:54] STORAGE1 readdir called for path /dirdir/durdur
+[Thu 2018-08-16 13:08:54] STORAGE1 readdir call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:54] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:54] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:54] STORAGE1 127.0.0.1:10001 server status check failing for 6 seconds.
+[Thu 2018-08-16 13:08:55] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:55] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:55] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:55] STORAGE1 127.0.0.1:10001 server status check failing for 7 seconds.
+[Thu 2018-08-16 13:08:56] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:56] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:56] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:56] STORAGE1 127.0.0.1:10001 server status check failing for 8 seconds.
+[Thu 2018-08-16 13:08:56] STORAGE1 127.0.0.1:10001 server downtime exceeds timeout limit.
+[Thu 2018-08-16 13:08:56] STORAGE1 127.0.0.1:10001 replicating data to hotswap.
+[Thu 2018-08-16 13:08:56] STORAGE1 127.0.0.1:10001 server replaced with hotswap.
+[Thu 2018-08-16 13:08:56] STORAGE1 127.0.0.1:11111 server replaced with hotswap.
+[Thu 2018-08-16 13:08:57] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:57] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:57] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:57] STORAGE1 127.0.0.1:11111 server status check successful.
+[Thu 2018-08-16 13:08:58] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:58] STORAGE1 127.0.0.1:11111 server status check successful.
+[Thu 2018-08-16 13:08:58] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:58] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:59] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:08:59] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr called for path /.gitignore
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr called for path /dirdir
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr call for path /dirdir returned with success.
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:59] STORAGE1 readdir called for path /dirdir
+[Thu 2018-08-16 13:08:59] STORAGE1 readdir call for path /dirdir returned with success.
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr called for path /dirdir/c
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr call for path /dirdir/c returned with success.
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr called for path /dirdir/.gitignore
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr called for path /dirdir/b
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr call for path /dirdir/b returned with success.
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr called for path /dirdir/durdur
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:08:59] STORAGE1 readdir called for path /dirdir/durdur
+[Thu 2018-08-16 13:08:59] STORAGE1 readdir call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:08:59] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:08:59] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:08:59] STORAGE1 127.0.0.1:11111 server status check successful.
+[Thu 2018-08-16 13:09:00] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:00] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:00] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:00] STORAGE1 127.0.0.1:11111 server status check successful.
+[Thu 2018-08-16 13:09:01] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:01] STORAGE1 127.0.0.1:11111 server status check successful.
+[Thu 2018-08-16 13:09:01] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:01] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:02] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:02] STORAGE1 127.0.0.1:11111 server status check successful.
+[Thu 2018-08-16 13:09:27] Config file parse.
+[Thu 2018-08-16 13:09:27] STORAGE1 access called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 access call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /.xdg-volume-info
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path /.xdg-volume-info returned with error: No such file or directory.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /autorun.inf
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path /autorun.inf returned with error: No such file or directory.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /.Trash
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path /.Trash returned with error: No such file or directory.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /.Trash-1000
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path /.Trash-1000 returned with error: No such file or directory.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /autorun.inf
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path /autorun.inf returned with error: No such file or directory.
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:27] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:28] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:28] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:29] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:29] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:29] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:29] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:30] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:30] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:31] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:31] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:09:31] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:31] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr called for path /.gitignore
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr called for path /dirdir
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr call for path /dirdir returned with success.
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:09:31] STORAGE1 readdir called for path /dirdir
+[Thu 2018-08-16 13:09:31] STORAGE1 readdir call for path /dirdir returned with success.
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr called for path /dirdir/c
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr call for path /dirdir/c returned with success.
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr called for path /dirdir/.gitignore
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr called for path /dirdir/b
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr call for path /dirdir/b returned with success.
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr called for path /dirdir/durdur
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:09:31] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:09:31] STORAGE1 readdir called for path /dirdir/durdur
+[Thu 2018-08-16 13:09:31] STORAGE1 readdir call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:09:32] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:32] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:32] STORAGE1 getattr called for path /f.txt
+[Thu 2018-08-16 13:09:32] STORAGE1 getattr call for path /f.txt returned with success.
+[Thu 2018-08-16 13:09:32] STORAGE1 open called for path /f.txt
+[Thu 2018-08-16 13:09:32] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:32] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:33] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:33] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:33] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:33] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:34] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:34] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:35] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:35] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:35] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:35] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:36] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:36] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:37] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:37] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:37] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:37] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:38] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:38] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:38] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:38] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:39] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:39] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:40] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:40] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:40] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:40] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:40] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:40] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:40] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:09:40] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:09:40] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:40] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:40] STORAGE1 getattr called for path /dirdir
+[Thu 2018-08-16 13:09:40] STORAGE1 getattr call for path /dirdir returned with success.
+[Thu 2018-08-16 13:09:40] STORAGE1 getattr called for path /e.txt
+[Thu 2018-08-16 13:09:40] STORAGE1 getattr call for path /e.txt returned with success.
+[Thu 2018-08-16 13:09:40] STORAGE1 getattr called for path /f.txt
+[Thu 2018-08-16 13:09:40] STORAGE1 getattr called for path /k.txt
+[Thu 2018-08-16 13:09:40] STORAGE1 getattr call for path /k.txt returned with success.
+[Thu 2018-08-16 13:09:40] STORAGE1 getattr call for path /f.txt returned with success.
+[Thu 2018-08-16 13:09:40] STORAGE1 readdir called for path /dirdir
+[Thu 2018-08-16 13:09:40] STORAGE1 readdir call for path /dirdir returned with success.
+[Thu 2018-08-16 13:09:40] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:40] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:41] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:41] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:41] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:41] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:42] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:42] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:43] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:43] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:43] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:43] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:44] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:44] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:45] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:45] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:45] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:45] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:45] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:45] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:46] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:46] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:46] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:46] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:47] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:47] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:48] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:48] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:48] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:48] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:49] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:49] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:50] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:50] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:50] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:09:50] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:09:51] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:51] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:52] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:52] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:53] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:53] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:54] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:54] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:55] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:55] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:56] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:56] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:57] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:57] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:09:58] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:09:58] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:27] Config file parse.
+[Thu 2018-08-16 13:10:43] Config file parse.
+[Thu 2018-08-16 13:10:43] STORAGE1 access called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 access call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /.xdg-volume-info
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path /.xdg-volume-info returned with error: No such file or directory.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /autorun.inf
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path /autorun.inf returned with error: No such file or directory.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /.Trash
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path /.Trash returned with error: No such file or directory.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /.Trash-1000
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path /.Trash-1000 returned with error: No such file or directory.
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /dirdir
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path /dirdir returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /e.txt
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path /e.txt returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /f.txt
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path /f.txt returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /k.txt
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path /k.txt returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:43] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /dirdir
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path /dirdir returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /dirdir
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path /dirdir returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /dirdir/b
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path /dirdir/b returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /dirdir/c
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path /dirdir/c returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /dirdir/durdur
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /dirdir/durdur
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /dirdir/durdur
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /autorun.inf
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path /autorun.inf returned with error: No such file or directory.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:44] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:44] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:44] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:45] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:45] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:45] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:45] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:46] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:46] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:47] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:47] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:47] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:47] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:48] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:48] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:48] STORAGE1 getattr called for path /dirdir
+[Thu 2018-08-16 13:10:48] STORAGE1 getattr called for path /e.txt
+[Thu 2018-08-16 13:10:48] STORAGE1 getattr call for path /dirdir returned with success.
+[Thu 2018-08-16 13:10:48] STORAGE1 getattr called for path /f.txt
+[Thu 2018-08-16 13:10:48] STORAGE1 getattr call for path /e.txt returned with success.
+[Thu 2018-08-16 13:10:48] STORAGE1 getattr called for path /k.txt
+[Thu 2018-08-16 13:10:48] STORAGE1 readdir called for path /dirdir
+[Thu 2018-08-16 13:10:48] STORAGE1 getattr call for path /k.txt returned with success.
+[Thu 2018-08-16 13:10:48] STORAGE1 getattr call for path /f.txt returned with success.
+[Thu 2018-08-16 13:10:48] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:48] STORAGE1 readdir call for path /dirdir returned with success.
+[Thu 2018-08-16 13:10:48] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:48] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:48] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:49] STORAGE1 getattr called for path /f.txt
+[Thu 2018-08-16 13:10:49] STORAGE1 getattr called for path /f.txt
+[Thu 2018-08-16 13:10:49] STORAGE1 getattr call for path /f.txt returned with success.
+[Thu 2018-08-16 13:10:49] STORAGE1 open called for path /f.txt
+[Thu 2018-08-16 13:10:49] STORAGE1 getattr call for path /f.txt returned with success.
+[Thu 2018-08-16 13:10:49] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:49] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:49] STORAGE1 read called for path /f.txt
+[Thu 2018-08-16 13:10:49] STORAGE1 getattr called for path /f.txt
+[Thu 2018-08-16 13:10:49] STORAGE1 getattr call for path /f.txt returned with success.
+[Thu 2018-08-16 13:10:49] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:49] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:50] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:50] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:50] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:50] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:51] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:51] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:51] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:51] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:10:52] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:10:52] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr called for path /.gitignore
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr called for path /dirdir
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr call for path /dirdir returned with success.
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:10:52] STORAGE1 readdir called for path /dirdir
+[Thu 2018-08-16 13:10:52] STORAGE1 readdir call for path /dirdir returned with success.
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr called for path /dirdir/c
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr call for path /dirdir/c returned with success.
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr called for path /dirdir/.gitignore
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr called for path /dirdir/b
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr call for path /dirdir/b returned with success.
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr called for path /dirdir/durdur
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:10:52] STORAGE1 readdir called for path /dirdir/durdur
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:52] STORAGE1 readdir call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:52] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:52] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:52] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:53] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:53] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:54] STORAGE1 getattr called for path /f.txt
+[Thu 2018-08-16 13:10:54] STORAGE1 getattr call for path /f.txt returned with success.
+[Thu 2018-08-16 13:10:54] STORAGE1 open called for path /f.txt
+[Thu 2018-08-16 13:10:54] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:54] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:54] STORAGE1 read called for path /f.txt
+[Thu 2018-08-16 13:10:54] STORAGE1 open called for path /f.txt
+[Thu 2018-08-16 13:10:54] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:54] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:54] STORAGE1 truncate called for path /f.txt
+[Thu 2018-08-16 13:10:54] STORAGE1 getattr called for path /f.txt
+[Thu 2018-08-16 13:10:54] STORAGE1 getattr call for path /f.txt returned with success.
+[Thu 2018-08-16 13:10:55] STORAGE1 write called for path /f.txt
+[Thu 2018-08-16 13:10:55] STORAGE1 getattr called for path /f.txt
+[Thu 2018-08-16 13:10:55] STORAGE1 getattr call for path /f.txt returned with success.
+[Thu 2018-08-16 13:10:55] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:55] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:55] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:55] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:56] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:56] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:57] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:57] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:57] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:57] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:10:58] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:58] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:59] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:10:59] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:10:59] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:10:59] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr called for path /.git
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr call for path /.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:11:00] STORAGE1 readdir called for path /
+[Thu 2018-08-16 13:11:00] STORAGE1 readdir call for path / returned with success.
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr called for path /.gitignore
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr call for path /.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr called for path /dirdir
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr call for path /dirdir returned with success.
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr called for path /dirdir/.git
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr call for path /dirdir/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:11:00] STORAGE1 readdir called for path /dirdir
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:11:00] STORAGE1 readdir call for path /dirdir returned with success.
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr called for path /dirdir/c
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr call for path /dirdir/c returned with success.
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr called for path /dirdir/.gitignore
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr call for path /dirdir/.gitignore returned with error: No such file or directory.
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr called for path /dirdir/b
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr call for path /dirdir/b returned with success.
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr called for path /dirdir/durdur
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr called for path /dirdir/durdur/.git
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr call for path /dirdir/durdur/.git returned with error: No such file or directory.
+[Thu 2018-08-16 13:11:00] STORAGE1 readdir called for path /dirdir/durdur
+[Thu 2018-08-16 13:11:00] STORAGE1 readdir call for path /dirdir/durdur returned with success.
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:11:00] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:11:00] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:11:00] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:11:01] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:11:01] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:11:01] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:11:01] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:11:02] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:11:02] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:11:03] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:11:03] STORAGE1 127.0.0.1:10001 server status check successful.
+[Thu 2018-08-16 13:11:03] STORAGE1 getattr called for path /
+[Thu 2018-08-16 13:11:03] STORAGE1 getattr call for path / returned with success.
+[Thu 2018-08-16 13:11:04] STORAGE1 127.0.0.1:10002 server status check successful.
+[Thu 2018-08-16 13:11:04] STORAGE1 127.0.0.1:10001 server status check successful.

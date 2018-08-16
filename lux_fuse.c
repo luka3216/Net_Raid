@@ -292,6 +292,7 @@ void *monitor_routine(void *args)
         log_serv_info(CONN_CONT_FAIL, &_this_storage, this_server, time_since_fail);
         if (time_since_fail >= _lux_client_info.timeout)
         {
+          log_serv_info(CONN_FAIL_FINAL, &_this_storage, this_server, 0);
           log_serv_info(CONN_COPYING, &_this_storage, this_server, 0);
           copy_server_contents(_this_storage.servers[(server_index + 1) % 2], _this_storage.hotswap);
           log_serv_info(CONN_COPYING_COMPLETE, &_this_storage, this_server, 0);
@@ -328,11 +329,11 @@ int monitor_server(int server_index)
   return 0;
 }
 
-int get_server_fd(struct lux_server *this_server)
+int get_server_fd(struct lux_server* server)
 {
   {
     int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
-    if (connect(sock_fd, (struct sockaddr *)&this_server->server_adress, sizeof(struct sockaddr_in)) != -1)
+    if (connect(sock_fd, (struct sockaddr *)&server->server_adress, sizeof(struct sockaddr_in)) != -1)
     {
       return sock_fd;
     }
@@ -544,7 +545,7 @@ static int lux_open(const char *path, struct fuse_file_info *fi)
   log_server_call(path, &_this_storage, OPEN);
   int ret_stat = increment_pending_number(path);
   if (ret_stat)
-    return -EBUSY;
+    return -EAGAIN;
   server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(OPEN, path, NULL, 0, 0, 0, 0, NULL, 0);
@@ -601,7 +602,7 @@ static int lux_write(const char *path, const char *buf, size_t size, off_t offse
   log_server_call(path, &_this_storage, WRITE);
   int ret_stat = increment_pending_number(path);
   if (ret_stat)
-    return -EBUSY;
+    return -EAGAIN;
   (void)fi;
 
   server_sockets socks = get_live_sockets(_this_storage.servers);
@@ -646,7 +647,7 @@ static int lux_truncate(const char *path, off_t size)
   log_server_call(path, &_this_storage, TRUNCATE);
   int ret_stat = increment_pending_number(path);
   if (ret_stat)
-    return -EBUSY;
+    return -EAGAIN;
   server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(TRUNCATE, path, NULL, size, 0, 0, 0, NULL, 0);
@@ -669,7 +670,7 @@ static int lux_rename(const char *old, const char *new)
   log_server_call(old, &_this_storage, RENAME);
   int ret_stat = increment_pending_number(old);
   if (ret_stat)
-    return -EBUSY;
+    return -EAGAIN;
   server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(RENAME, old, new, 0, 0, 0, 0, NULL, 0);
@@ -692,7 +693,7 @@ static int lux_unlink(const char *path)
   log_server_call(path, &_this_storage, UNLINK);
   int ret_stat = increment_pending_number(path);
   if (ret_stat)
-    return -EBUSY;
+    return -EAGAIN;
   server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(UNLINK, path, NULL, 0, 0, 0, 0, NULL, 0);
@@ -715,7 +716,7 @@ static int lux_rmdir(const char *path)
   log_server_call(path, &_this_storage, RMDIR);
   int ret_stat = increment_pending_number(path);
   if (ret_stat)
-    return -EBUSY;
+    return -EAGAIN;
   server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(RMDIR, path, NULL, 0, 0, 0, 0, NULL, 0);
@@ -738,7 +739,7 @@ static int lux_mknod(const char *path, mode_t mode, dev_t dev)
   log_server_call(path, &_this_storage, CREATE);
   int ret_stat = increment_pending_number(path);
   if (ret_stat)
-    return -EBUSY;
+    return -EAGAIN;
   server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(CREATE, path, NULL, 0, 0, mode, dev, NULL, 0);
@@ -761,7 +762,7 @@ static int lux_mkdir(const char *path, mode_t mode)
   log_server_call(path, &_this_storage, MKDIR);
   int ret_stat = increment_pending_number(path);
   if (ret_stat)
-    return -EBUSY;
+    return -EAGAIN;
   server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(MKDIR, path, NULL, 0, 0, mode, 0, NULL, 0);
@@ -784,7 +785,7 @@ static int lux_utimens(const char *path, const struct timespec tv[2])
   log_server_call(path, &_this_storage, UTIMENS);
   int ret_stat = increment_pending_number(path);
   if (ret_stat)
-    return -EBUSY;
+    return -EAGAIN;
   server_sockets socks = get_live_sockets(_this_storage.servers);
 
   struct raid_one_input input = generate_server_input(UTIMENS, path, NULL, 0, 0, 0, 0, tv, 0);
